@@ -1,5 +1,6 @@
 body {
     padding-top: 50px;
+    padding-bottom: 33px;
 }
 .navbar.navbar-toggle {
     border-color: transparent;
@@ -116,4 +117,12 @@ h3 {
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+footer {
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: 'Didact Gothic', sans-serif;
+    text-align: center;
+    height: 33px;
 }

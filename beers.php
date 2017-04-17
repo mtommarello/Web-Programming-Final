@@ -57,6 +57,8 @@
 
 
 
-<p> list of beers pulled from database will go here</p>
+<?php
+    include 'footer.php';
+?>
 </body>
 </html>
