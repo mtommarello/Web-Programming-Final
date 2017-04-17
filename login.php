@@ -75,7 +75,7 @@
                     }
 
                     mysqli_close($dbConnection);  
-                    header("location:index.php");
+                    header("location:profile.php");
                 }
             }
         }
