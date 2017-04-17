@@ -59,6 +59,15 @@ height:100%;
     opacity: 0.8;
     margin-top:20px;
     text-align: center;
+    color: #000000;
+}
+
+.col-sm-12.cards a:link {
+    color: #000000;
+}
+
+.col-sm-12.cards a:visited {
+    color: #000000;
 }
 
 
@@ -106,7 +115,7 @@ h3 {
     opacity: 0.9;
     color: #000000;
     text-align: center;
-    height: 250px;
+    height: 300px;
     border: 10px solid #000000;
 }
 
@@ -115,8 +124,10 @@ h3 {
     opacity: 0.9;
     color: #000000;
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 footer {

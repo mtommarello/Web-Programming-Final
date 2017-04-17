@@ -4,6 +4,7 @@
 <?php 
     include 'header.php';
 ?>
+    
 <script>
     $(document).ready(function() {
         $(".player").mb_YTPlayer();
@@ -31,15 +32,15 @@
                         <h3>Your one stop shop for all of your favorite Pittsburgh Brewers</h3>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12 cards">
+                <div class="row animated fadeIn">
+                    <div class="col-sm-12 cards"><a href="brewers.php">
                         <h2>Brewers</h2>
                         <p>View Brewers in the Pittsburgh Area</p>
-                    </div>
-                    <div class="col-sm-12 cards">
+                    </a></div>
+                    <div class="col-sm-12 cards"><a href="beers.php">
                         <h2>Beers</h2>
                         <p>View beers in the Pittsburgh Area</p>
-                    </div>
+                    </a></div>
                     <div class="col-sm-12 cards">
                         <h2>About</h2>
                         <p>More About Us</p>
