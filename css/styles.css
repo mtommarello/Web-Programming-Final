@@ -1,0 +1,92 @@
+.navbar.navbar-toggle {
+    border-color: transparent;
+}
+
+.navbar-default {
+    background-color: #000000;
+    font-family: 'Domine', serif;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    border-color: transparent;
+}
+
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFFFFF;
+}
+
+.navbar-default .navbar-toggle.collapsed {
+    border-color: transparent;
+}
+
+.navbar-default .navbar-brand {
+    color: #FFFFFF;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    color: #FFFFFF;
+}
+
+.homepageTitle, .homepageSubTitle {
+    text-align:center;
+}
+
+body {
+    background-color: #000000;
+}
+
+.videoOverlay {
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+.container{
+height:100%;    
+    }
+
+.col-md-4{
+ background-color:#D3D7E0;
+ opacity: 0.8;
+margin-top:20px;
+padding: 30px;
+height:300px;
+}
+
+.video-section .pattern-overlay {
+background-color: rgba(71, 71, 71, 0.29);
+padding: 110px 0 32px;
+min-height: 1500px;
+/* Incase of overlay problems just increase the min-height*/
+}
+
+
+.video-section h1, .video-section h3{
+text-align:center;
+color:#fff;
+}
+
+.video-section h1{
+font-size:110px;
+font-family: 'Domine', serif;
+font-weight:bold;
+text-transform: uppercase;
+margin: 40px auto 0px;
+text-shadow: 1px 1px 1px #000;
+-webkit-text-shadow: 1px 1px 1px #000;
+-moz-text-shadow: 1px 1px 1px #000;
+}
+.video-section h3{
+font-family: 'Didact Gothic', sans-serif;
+font-size: 25px;
+font-weight:lighter;
+margin: 0px auto 15px;
+}
+.video-section .buttonBar{display:none;}
+.player {font-size: 1px;}
+
+h2 {
+    font-family: 'Domine', serif;
+}
+
+p {
+    font-family: 'Didact Gothic', sans-serif;
+}

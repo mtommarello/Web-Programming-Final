@@ -1,4 +1,7 @@
 <?php 
+	//connects to database
+	include 'dbConnection.php'; 
+
 	// defining the variables and setting empty values 
 	$fName = $lName = $userName = $password = $phoneNumber = $age = $email = " ";
 	$fnameErr = $lnameErr = $userNameErr = $passwordErr = $phonenumberErr = $ageErr = $emailErr = $counter = " ";
@@ -88,6 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 	
 	}
+
 ?>
 	
 <!doctype html>
@@ -134,7 +138,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <form method = "POST" action="userprofile.php">
 
 		<div>
-			First Name: <input type="text" name = "fName" value = "<?php if (isset($_POST['fName'])){echo htmlspecialchars($fName);}?>"/><span class="error"><?php echo $fnameErr;?></span> 
+			<label for="fName">First Name: </label>
+			<input type="text" name = "fName" value = "<?php if (isset($_POST['fName'])){echo htmlspecialchars($fName);}?>"/><span class="error"><?php echo $fnameErr;?></span> 
 			</div></br>
 		<div>	
 			Last Name: <input type="text" name = "lName" value = "<?php if (isset($_POST['lName'])){echo htmlspecialchars($lName);}?>"/><span class="error"><?php echo $lnameErr;?></span>
@@ -161,6 +166,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </form>
 
 <?php
+	//inserts form values in database 
+	$sql = "INSERT INTO finalUsers (fName, lName, password, phoneNumber, age, userName) 
+	VALUES ('$_POST[fName]', '$_POST[lName]','$_POST[password]','$_POST[phoneNumber]','$_POST[age]','$_POST[userName]')";
+
+	if (mysqli_query($dbConnection, $sql)){
+	echo "Your profile has been created!";
+} else {
+	echo "Error: ". $sql. "<br>". mysql_error($dbConnection);
+}
+
+mysql_close($dbConnect);
+
+echo '<br />';
+
+
 //timestamps and dates when submited
 date_default_timezone_set("America/New_York");
 	$date = new DateTime();

@@ -51,15 +51,15 @@
                 require"dbConnection.php";
 
                 //check username & password to the database
-                $queryUser =  "SELECT idusers FROM users ";
-                $queryUser .= "WHERE userName ='{$userName}' AND userPassword ='{$userPassword}' ";
+                $queryUser =  "SELECT userName FROM finalUsers";
+                $queryUser .= "WHERE userName ='{$userName}' AND password ='{$password}' ";
 
                 $resultUser = mysqli_query($dbConnection, $queryUser);
 
                 $returnedRows=mysqli_num_rows($resultUser);
 
                 //if no matches found in database
-                if($returnedRows == 0){
+                if($returnedRows == 1){
                     echo "Error: username, password, or both incorrect.";
                 }
                 
@@ -70,12 +70,12 @@
 
                     while($row = mysqli_fetch_row($resultUser)){
                         foreach($row as $key=> $col){
-                               $_SESSION['userID'] =$col;
+                               $_SESSION['userName'] =$col;
                               }
                     }
 
                     mysqli_close($dbConnection);  
-                    header("location:main.php");
+                    header("location:profile.php");
                 }
             }
         }
@@ -83,7 +83,7 @@
 
     else{
         $userName ="";
-        $userPassword="";
+        $password="";
     }
 
 
@@ -93,11 +93,7 @@
 
 <!doctype html>
 <html lang="en-us">
-<head> 
-	<meta charset ="utf-8">
-	<title>Animal Forum!</title>
-</head>
-    
+ 
 <body>
 	<?php include 'nav.php'; ?>
     <!--Form to get username/password-->
@@ -109,8 +105,8 @@
         <div class="container"> <label><b>Username:</b></label><br/>
         	<input type= "test" input name ="userName" pacleholder= "Enter Username" value="<?php echo htmlspecialchars($userName); ?>"  maxlength="20" required> <br>
         	</div>
-        <div class="container"> <labe><b>Password:</b></label><br/>
-        	<input type= "password" input name="userPassword"  value="<?php echo htmlspecialchars($userPassword); ?>" maxlength="15" required ><br>
+        <div class="container"> <label><b>Password:</b></label><br/>
+        	<input type= "password" input name="password"  value="<?php echo htmlspecialchars($password); ?>" maxlength="15" required ><br>
 			</div>        
         <div class="container"> <input type="submit" name="submit" value="submit">
     		</div>
