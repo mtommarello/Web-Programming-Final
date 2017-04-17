@@ -1,3 +1,6 @@
+body {
+    padding-top: 50px;
+}
 .navbar.navbar-toggle {
     border-color: transparent;
 }
@@ -91,4 +94,26 @@ h2 {
 
 p {
     font-family: 'Didact Gothic', sans-serif;
+}
+
+h3 {
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+.beerList {
+    background-color:#D3D7E0;
+    opacity: 0.9;
+    color: #000000;
+    text-align: center;
+    height: 250px;
+    border: 10px solid #000000;
+}
+
+.beerListXs {
+    background-color:#D3D7E0;
+    opacity: 0.9;
+    color: #000000;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
