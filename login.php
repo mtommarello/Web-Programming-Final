@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include 'dbConnection.php';
+?>
+
 <head>
 	<meta charset ="utf-8">
 		<title> Login </title>
@@ -11,7 +16,6 @@
 </head>
 	
 <?php
-    session_start();
     if($_POST){
         
         //if user submits with an empty field
@@ -26,8 +30,8 @@
             $userName = trim($_POST["userName"]);
             $password = trim($_POST["password"]);
             
-            $userName = mysql_real_escape_string($userName);
-            $password = mysql_real_escape_string($password);
+            $userName = mysqli_real_escape_string($dbConnection, $userName);
+            $password = mysqli_real_escape_string($dbConnection, $password);
             
 			//validations only allow letters/numbers for input
             if(!preg_match('/^[a-zA-Z0-9\s]+$/', $userName)){
@@ -48,18 +52,17 @@
             //if valid entries and no more errors
             if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($errors))
             {
-                require"dbConnection.php";
 
                 //check username & password to the database
-                $queryUser =  "SELECT userName FROM finalUsers";
-                $queryUser .= "WHERE userName ='{$userName}' AND password ='{$password}' ";
+                $queryUser =  "SELECT idusers FROM users ";
+                $queryUser .= "WHERE userName ='{$userName}' AND userPassword ='{$password}' ";
 
                 $resultUser = mysqli_query($dbConnection, $queryUser);
 
                 $returnedRows=mysqli_num_rows($resultUser);
 
                 //if no matches found in database
-                if($returnedRows == 1){
+                if($returnedRows == 0){
                     echo "Error: username, password, or both incorrect.";
                 }
                 
@@ -70,12 +73,12 @@
 
                     while($row = mysqli_fetch_row($resultUser)){
                         foreach($row as $key=> $col){
-                               $_SESSION['userName'] =$col;
+                               $_SESSION['userID'] =$col;
                               }
                     }
 
-                    mysqli_close($dbConnection);  
-                    header("location:profile.php");
+                    mysqli_close($dbConnection);
+                    echo '<script>$(location).attr("href", "index.php");</script>';
                 }
             }
         }
@@ -93,9 +96,13 @@
 
 <!doctype html>
 <html lang="en-us">
- 
+<head> 
+	<meta charset ="utf-8">
+	<title>Animal Forum!</title>
+</head>
+    
 <body>
-	<?php include 'nav.php'; ?>
+	<?php //include 'nav.php'; ?>
     <!--Form to get username/password-->
     <form method="post" action="login.php">
     	<div class="container">
@@ -106,11 +113,10 @@
         	<input type= "test" input name ="userName" pacleholder= "Enter Username" value="<?php echo htmlspecialchars($userName); ?>"  maxlength="20" required> <br>
         	</div>
         <div class="container"> <label><b>Password:</b></label><br/>
-        	<input type= "password" input name="password"  value="<?php echo htmlspecialchars($password); ?>" maxlength="15" required ><br>
+        	<input type= "text" input name="password"  value="<?php echo htmlspecialchars($password); ?>" maxlength="15" required ><br>
 			</div>        
         <div class="container"> <input type="submit" name="submit" value="submit">
     		</div>
     </form>
-    
 </body>
 </html>

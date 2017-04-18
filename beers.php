@@ -1,9 +1,11 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 
 <html>
 
 <?php
-    session_start();
     include 'header.php';
 ?>
 <body>
