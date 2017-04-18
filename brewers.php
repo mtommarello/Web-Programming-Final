@@ -5,6 +5,9 @@
 <?php
     include 'header.php';
 ?>
+<script>
+
+</script>
 <body>
     <?php
     include 'nav.php';
@@ -17,22 +20,24 @@
                 $query = "SELECT brewerName FROM brewers";
                 $brewerCount = 1;
                 if ($result = mysqli_query($dbConnection, $query)){
+                            echo '<div class="panel-group" id="accordion">';
                     while ($row = $result->fetch_assoc()) {
-                        echo "<div class='hidden-xs col-sm-6 col-md-4 col-lg-3 beerList' id='brewer". $brewerCount . " data-brewerName=". $row["brewerName"] ."'>";
-                            echo "<h2>" . $row["brewerName"] . "</h2>";
-                            echo '<button class="ui-button ui-widget ui-corner-all" id=brewer'. $brewerCount . 'Like"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>';
-                            echo '<button class="ui-button ui-widget ui-corner-all" id=brewer'. $brewerCount . 'Like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>';
-                        echo "</div>";
-                        echo "<div class='col-xs-12 hidden-sm hidden-md hidden-lg beerListXs' id='brewer". $brewerCount . " data-brewerName=". $row["brewerName"] ."'>";
-                            echo "<h2>" . $row["brewerName"] . "</h2>";
-                            echo '<button class="ui-button ui-widget ui-corner-all" id=brewer'. $brewerCount . 'Like"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>';
-                            echo '<button class="ui-button ui-widget ui-corner-all" id=brewer'. $brewerCount . 'Like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>';
-                        echo "</div>";
+                                echo '<div class="panel panel-default">';
+                                    echo '<div class="panel-heading">';
+                                        echo '<h4 class="panel-title">';
+                                            echo '<a data-toggle="collapse" data-parent="#accordion" href="#brewer' . $brewerCount . '">' . $row["brewerName"] . '</a>';
+                                        echo '</h4>';
+                                    echo '</div>';
+                                    
+                                    echo '<div id="brewer' . $brewerCount . '" class="panel-collapse collapse in">';
+                                        echo '<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>';
+                                    echo '</div>';
+                                echo '</div>';
+                                echo '<script>$("#brewer' . $brewerCount . '").collapse("hide");</script>';
                         $brewerCount++;
                     }
                 }
             ?>
-        </div>
     </div>
 <?php
     include 'footer.php';

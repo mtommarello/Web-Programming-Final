@@ -10,6 +10,11 @@
 ?>
 <body>
     <?php
+        if($_SESSION) {
+            echo '<script>';
+                echo 'window.history.back();';
+            echo '</script>';
+        }
         if($_POST){
 
             //if user submits with an empty field
@@ -96,7 +101,9 @@
                                   }
                         }
                         mysqli_close($dbConnection);
-                        echo '<script>$(location).attr("href", "index.php");</script>';
+                        echo '<script>';
+                            echo 'window.history.back();';
+                        echo '</script>';
                     }
                 }
             }
