@@ -1,3 +1,7 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 33px;
+}
 .navbar.navbar-toggle {
     border-color: transparent;
 }
@@ -41,38 +45,48 @@ body {
 
 .container{
 height:100%;    
-    }
-
-.col-md-4{
- background-color:#D3D7E0;
- opacity: 0.8;
-margin-top:20px;
-padding: 30px;
-height:300px;
 }
 
-.video-section .pattern-overlay {
-background-color: rgba(71, 71, 71, 0.29);
-padding: 110px 0 32px;
-min-height: 1500px;
-/* Incase of overlay problems just increase the min-height*/
+.col-md-4.cards{
+    background-color:#D3D7E0;
+    opacity: 0.8;
+    margin: 20px;
+    text-align: center;
+}
+
+.col-sm-12.cards{
+    background-color:#D3D7E0;
+    opacity: 0.8;
+    margin-top:20px;
+    text-align: center;
+    color: #000000;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.col-sm-12.cards a:link {
+    color: #000000;
+}
+
+.col-sm-12.cards a:visited {
+    color: #000000;
 }
 
 
 .video-section h1, .video-section h3{
-text-align:center;
-color:#fff;
+    text-align:center;
+    color:#fff;
 }
 
 .video-section h1{
-font-size:110px;
-font-family: 'Domine', serif;
-font-weight:bold;
-text-transform: uppercase;
-margin: 40px auto 0px;
-text-shadow: 1px 1px 1px #000;
--webkit-text-shadow: 1px 1px 1px #000;
--moz-text-shadow: 1px 1px 1px #000;
+    font-size:110px;
+    font-family: 'Domine', serif;
+    font-weight:bold;
+    text-transform: uppercase;
+    margin: 40px auto 0px;
+    text-shadow: 1px 1px 1px #000;
 }
 .video-section h3{
 font-family: 'Didact Gothic', sans-serif;
@@ -80,8 +94,13 @@ font-size: 25px;
 font-weight:lighter;
 margin: 0px auto 15px;
 }
-.video-section .buttonBar{display:none;}
-.player {font-size: 1px;}
+
+.video-section .buttonBar{
+    display:none;
+}
+.player {
+    font-size: 1px;
+}
 
 h2 {
     font-family: 'Domine', serif;
@@ -89,4 +108,41 @@ h2 {
 
 p {
     font-family: 'Didact Gothic', sans-serif;
+}
+
+h3 {
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+.beerList {
+    background-color:#D3D7E0;
+    opacity: 0.9;
+    color: #000000;
+    text-align: center;
+    height: 300px;
+    border: 10px solid #000000;
+}
+
+.beerListXs {
+    background-color:#D3D7E0;
+    opacity: 0.9;
+    color: #000000;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+footer {
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: 'Didact Gothic', sans-serif;
+    text-align: center;
+    height: 33px;
+}
+
+#loginPage {
+    font-family: 'Didact Gothic', sans-serif;
+    align-self: flex-end;
 }
