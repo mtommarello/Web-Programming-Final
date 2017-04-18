@@ -1,5 +1,5 @@
 body {
-    padding-top: 50px;
+    padding-top: 60px;
     padding-bottom: 33px;
 }
 .navbar.navbar-toggle {
@@ -60,6 +60,10 @@ height:100%;
     margin-top:20px;
     text-align: center;
     color: #000000;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .col-sm-12.cards a:link {
@@ -136,4 +140,9 @@ footer {
     font-family: 'Didact Gothic', sans-serif;
     text-align: center;
     height: 33px;
+}
+
+#loginPage {
+    font-family: 'Didact Gothic', sans-serif;
+    align-self: flex-end;
 }
