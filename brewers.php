@@ -28,6 +28,7 @@
                                             echo '<a data-toggle="collapse" data-parent="#accordion" href="#brewer' . $brewerCount . '">' . $row["brewerName"] . '</a>';
                                         echo '</h4>';
                                     echo '</div>';
+                                    
                                     echo '<div id="brewer' . $brewerCount . '" class="panel-collapse collapse in">';
                                         echo '<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>';
                                     echo '</div>';

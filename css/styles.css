@@ -151,4 +151,9 @@ footer {
     background-color:#D3D7E0;
     opacity: 0.9;
     margin: 5px;
+    font-family: 'Domine', serif;
+}
+
+.panel-body {
+    font-family: 'Didact Gothic', sans-serif;
 }
