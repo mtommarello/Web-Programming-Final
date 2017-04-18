@@ -146,3 +146,9 @@ footer {
     font-family: 'Didact Gothic', sans-serif;
     align-self: flex-end;
 }
+
+.panel {
+    background-color:#D3D7E0;
+    opacity: 0.9;
+    margin: 5px;
+}
