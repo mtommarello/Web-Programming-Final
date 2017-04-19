@@ -14,13 +14,13 @@
     <div class="container">
         <div class="row animated zoomIn">
             <?php
-                $query = "SELECT brewerName, brewerLocation, brewerLat, brewerLong, brewersHours, brewersDes FROM brewers";
+                $query = "SELECT brewerName, brewerLocation, brewerLat, brewerLong, brewersHours, brewersDes, brewerAddress FROM brewers";
                 $brewerCount = 1;
                 if ($result = mysqli_query($dbConnection, $query)){
                         echo '<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4>';
                             echo '<div class="panel-group" id="accordion">';
                     while ($row = $result->fetch_assoc()) {
-                                echo '<div class="panel panel-default" data-lat="' . $row["brewerLat"] . '" data-long="' . $row["brewerLong"] . '" data-brewerName="' . $row["brewerName"] . '" data-brewerLocation= "' . $row["brewerLocation"] . '" data-brewerAddress="' . $row["brewerAddress"] .'" data-brewersHours="' . $row["brewersHours"] '>';
+                                echo '<div class="panel panel-default" data-lat="' . $row["brewerLat"] . '" data-long="' . $row["brewerLong"] . '" data-brewerName="' . $row["brewerName"] . '" data-brewerLocation= "' . $row["brewerLocation"] . '" data-brewerAddress="' . $row["brewerAddress"] .'" data-brewerHours="' . $row["brewersHours"] . '">';
                                     echo '<div class="panel-heading">';
                                         echo '<h4 class="panel-title">';
                                             echo '<a data-toggle="collapse" data-parent="#accordion" href="#brewer' . $brewerCount . '">' . $row["brewerName"] . '</a>';
@@ -40,8 +40,9 @@
                 <h2 class="brewersClosed">Select a Brewer on the Left</h2>
                 <h2 class="brewersOpen"></h2>
                 <div id="map"></div>
-                <div id="address"></div>
-                <div id="hours"></div>
+                <div class="location"></div>
+                <div class="address"></div>
+                <div class="hours"></div>
             </div>
         </div>
     </div>
@@ -53,6 +54,9 @@
     $().ready(function() {
         $('#map').hide();
         $('.brewersOpen').hide();
+        $('.hours').hide();
+        $('.address').hide();
+        $('.location').hide();
     });
     function initMap(lat, long) {
         var uluru = {lat: parseFloat(lat), lng: parseFloat(long)};
@@ -73,6 +77,15 @@
         $(".brewersOpen").show();
         var lat = $('#accordion .in').parent().attr("data-lat");
         var long = $('#accordion .in').parent().attr("data-long");
+        var location = $('#accordion .in').parent().attr("data-brewerLocation");
+        var address = $('#accordion .in').parent().attr("data-brewerAddress");
+        var hours = $('#accordion .in').parent().attr("data-brewerHours");
+        $(".location").html(location);
+        $(".address").html(address);
+        $(".hours").html(hours);
+        $(".location").show();
+        $(".address").show();
+        $(".hours").show();
         console.log(lat);
         console.log(long);
         $('#map').show();
@@ -83,6 +96,9 @@
         $('#map').hide();
         $('.brewersOpen').hide();
         $('.brewersClosed').show();
+        $('.hours').hide();
+        $('.address').hide();
+        $('.location').hide();
     });
 </script>
 <script async defer
