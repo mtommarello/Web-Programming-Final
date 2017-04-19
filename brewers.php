@@ -14,13 +14,13 @@
     <div class="container">
         <div class="row animated zoomIn">
             <?php
-                $query = "SELECT brewerName, brewerLocation, brewerLat, brewerLong FROM brewers";
+                $query = "SELECT brewerName, brewerLocation, brewerLat, brewerLong, brewersHours, brewersDes FROM brewers";
                 $brewerCount = 1;
                 if ($result = mysqli_query($dbConnection, $query)){
                         echo '<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4>';
                             echo '<div class="panel-group" id="accordion">';
                     while ($row = $result->fetch_assoc()) {
-                                echo '<div class="panel panel-default" data-lat="' . $row["brewerLat"] . '" data-long="' . $row["brewerLong"] . '" data-brewerName="' . $row["brewerName"] . '">';
+                                echo '<div class="panel panel-default" data-lat="' . $row["brewerLat"] . '" data-long="' . $row["brewerLong"] . '" data-brewerName="' . $row["brewerName"] . '" data-brewerLocation= "' . $row["brewerLocation"] . '" data-brewerAddress="' . $row["brewerAddress"] .'" data-brewersHours="' . $row["brewersHours"] '>';
                                     echo '<div class="panel-heading">';
                                         echo '<h4 class="panel-title">';
                                             echo '<a data-toggle="collapse" data-parent="#accordion" href="#brewer' . $brewerCount . '">' . $row["brewerName"] . '</a>';
@@ -28,7 +28,7 @@
                                     echo '</div>';
                                     echo '<div id="brewer' . $brewerCount . '" class="panel-collapse collapse">';
                                         echo '<div class="panel-body">';
-                                        echo 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>';
+                                        echo $row["brewersDes"] . '</div>';
                                     echo '</div>';
                                 echo '</div>';
                         $brewerCount++;
@@ -40,6 +40,8 @@
                 <h2 class="brewersClosed">Select a Brewer on the Left</h2>
                 <h2 class="brewersOpen"></h2>
                 <div id="map"></div>
+                <div id="address"></div>
+                <div id="hours"></div>
             </div>
         </div>
     </div>
