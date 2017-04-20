@@ -7,11 +7,29 @@
 
 <?php
     include 'header.php';
+    for
 ?>
+
 <body>
     <?php
     include 'nav.php';
     include 'dbConnection.php';
+            $query= "SELECT COUNT(beerID)
+            FROM beers";
+            $beerCount = 0;
+            if ($result = mysqli_query($dbConnection, $query)){
+                while ($row = $result->fetch_assoc()){
+                    $beerCount = $row["COUNT(beerID)"];
+                }
+            }
+    
+        for ($x = 0; $x <= $beerCount; $beerCount++){
+            if(isset($_GET['beer' . $x . 'Like'])) {
+                
+            } else if(isset($_GET['beer' . $x . $'Dislike'])) {
+                
+            }
+        }
     ?>
     <script>$.backstretch("img/web-background.jpg")</script>
     <div class="container">
@@ -35,9 +53,9 @@
                                         echo $row["beerName"] . "<br>";
                                         echo "ABV: " . $row["beerABV"] . "<br>";
                                         echo "Style: " . $row["beerStyle"] . "<br>";
-                                        echo '<button class="ui-button ui-widget ui-corner-all" id=beer'. $beerCount . 'Like"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>';
-                                        echo '<button class="ui-button ui-widget ui-corner-all" id=beer'. $beerCount . 'Like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>';
-                                        echo '<div class="likeStatus"></div>';
+                                        echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>';
+                                        echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>';
+                                        echo '<div class="likeStatus'. $beerCount . '" id="likeStatus' . $beerCount . '"></div>';
                                         echo '</div>';
                                     echo '</div>';
                                 echo '</div>';
@@ -52,14 +70,30 @@
         </div>
     </div>
 
-<script>
-    
-    
-    
-    </script>
+    <?php
+        if ($_SESSION) {
+            $query = 'SELECT ratings.ratingsID, ratings.rating, beers.beerName, beers.beerABV, beers.beerStyle, finalUsers.userName
+            FROM beers
+            INNER JOIN ratings ON ratings.beerID_fk= beers.beerID
+            INNER JOIN finalUsers ON finalUsers.finalUserID=ratings.finalUsersID_fk
+            WHERE finalUsers.userName = "' . $_SESSION["userName"] . '";';
+            $beerCount = 1;
+            if ($result = mysqli_query($dbConnection, $query)){
+                while($row = $result->fetch_assoc()) {
+                    if ($_SESSION["userName"] == $row['userName']) {
+                        echo '<script>';
+                            if($row["rating"] == 0) {
+                                echo '$("#beer'. $beerCount . 'Disike").css("background-color","red");';
+                            } else if($row["rating"] == 1) {
+                                echo '$("#beer'. $beerCount . 'Like").css("background-color","green");';
+                            }
+                        echo '</script>';
+                    }
+                    $beerCount++;
+                }
+            }
+        }
 
-
-<?php
     include 'footer.php';
 ?>
 </body>
