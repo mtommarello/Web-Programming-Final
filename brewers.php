@@ -5,6 +5,11 @@
 <?php
     include 'header.php';
 ?>
+    
+<head>
+    <title>Beer Time - Brewers</title>
+</head>
+    
 <body>
     <?php
     include 'nav.php';
@@ -28,7 +33,13 @@
                                     echo '</div>';
                                     echo '<div id="brewer' . $brewerCount . '" class="panel-collapse collapse">';
                                         echo '<div class="panel-body">';
-                                        echo $row["brewersDes"] . '</div>';
+                                        echo $row["brewersDes"] . '<br><br>';
+                                        echo '<div class="hidden-md hidden-lg brewerInfo">';
+                                            echo 'Neighborhood: ' . $row["brewerLocation"] . '<br>';
+                                            echo 'Address: ' . $row["brewerAddress"] . '<br>';
+                                            echo 'Hours: ' . $row["brewersHours"];
+                                        echo '</div>';
+                                        echo '</div>';
                                     echo '</div>';
                                 echo '</div>';
                         $brewerCount++;
@@ -80,9 +91,9 @@
         var location = $('#accordion .in').parent().attr("data-brewerLocation");
         var address = $('#accordion .in').parent().attr("data-brewerAddress");
         var hours = $('#accordion .in').parent().attr("data-brewerHours");
-        $(".location").html(location);
-        $(".address").html(address);
-        $(".hours").html(hours);
+        $(".location").html("Neighborhood: " + location);
+        $(".address").html("Address: " + address);
+        $(".hours").html("Hours: " + hours);
         $(".location").show();
         $(".address").show();
         $(".hours").show();

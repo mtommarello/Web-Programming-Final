@@ -15,6 +15,11 @@
 
 </script>
 
+<head>
+    <title>Beer Time - Home</title>
+</head>
+    
+    
 <body>
 
     <?php
@@ -44,10 +49,10 @@
                         <h2>Beers</h2>
                         <p>View beers in the Pittsburgh Area</p>
                     </a></div>
-                    <div class="col-sm-12 cards">
+                    <div class="col-sm-12 cards"><a href="about.php">
                         <h2>About</h2>
                         <p>More About Us</p>
-                    </div>
+                    </a></div>
                 </div>
             </div>
         </div>

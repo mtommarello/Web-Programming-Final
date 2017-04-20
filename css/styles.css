@@ -17,6 +17,7 @@ body {
 
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #FFFFFF;
+    border-color: transparent;
 }
 
 .navbar-default .navbar-toggle.collapsed {

@@ -8,6 +8,11 @@
     include 'header.php';
     include 'nav.php';
 ?>
+    
+<head>
+    <title>Beer Time - Login</title>
+</head>
+    
 <body>
     <?php
         if($_SESSION) {

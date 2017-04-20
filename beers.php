@@ -8,6 +8,11 @@
 <?php
     include 'header.php';
 ?>
+    
+<head>
+    <title>Beer Time - Beers</title>
+</head>
+
 <body>
     <?php
     include 'nav.php';
@@ -21,7 +26,7 @@
                 $beerCount = 1;
                 if ($result = mysqli_query($dbConnection, $query)){
 
-                        echo '<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4>';
+                        echo '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12>';
                             echo '<div class="panel-group" id="accordion">';
                     while ($row = $result->fetch_assoc()) {
                                 echo '<div class="panel panel-default" data-beerStyle="'. $row["beerStyle"] . '">';

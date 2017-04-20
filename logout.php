@@ -3,6 +3,10 @@
 ?>
 <!DOCTYPE html>
 <html>
+    
+<head>
+    <title>Beer Time - Log Out</title>
+</head>
 
 <?php 
     include 'header.php';
