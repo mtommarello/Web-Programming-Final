@@ -3,13 +3,11 @@
 ?>
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 
 <?php
     include 'header.php';
 ?>
-    
-<head>
     <title>Beer Time - Beers</title>
 </head>
 
@@ -40,8 +38,8 @@
                                         echo $row["beerName"] . "<br>";
                                         echo "ABV: " . $row["beerABV"] . "<br>";
                                         echo "Style: " . $row["beerStyle"] . "<br>";
-                                        echo '<button class="ui-button ui-widget ui-corner-all" id=beer'. $beerCount . 'Like"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>';
-                                        echo '<button class="ui-button ui-widget ui-corner-all" id=beer'. $beerCount . 'Like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>';
+                                        echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>';
+                                        echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>';
                                         echo '<div class="likeStatus"></div>';
                                         echo '</div>';
                                     echo '</div>';

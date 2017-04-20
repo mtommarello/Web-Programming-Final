@@ -7,8 +7,6 @@
 <?php 
     include 'header.php';
 ?>
-    
-<head>
     <title>Beer Time - About Us</title>
 </head>
 

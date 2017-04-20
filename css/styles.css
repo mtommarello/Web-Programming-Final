@@ -143,7 +143,7 @@ footer {
     height: 33px;
 }
 
-#loginPage {
+.loginPage {
     font-family: 'Didact Gothic', sans-serif;
     align-self: flex-end;
 }

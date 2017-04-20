@@ -7,20 +7,18 @@
 <?php 
     include 'header.php';
 ?>
-    
-<script>
-    $(document).ready(function() {
-        $(".player").mb_YTPlayer();
-    });
-
-</script>
-
-<head>
     <title>Beer Time - Home</title>
 </head>
     
     
 <body>
+    
+    <script>
+        $(document).ready(function() {
+            $(".player").mb_YTPlayer();
+        });
+
+    </script>
 
     <?php
         include 'nav.php';

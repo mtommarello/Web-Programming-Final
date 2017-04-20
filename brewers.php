@@ -1,12 +1,11 @@
 <?php
     session_start();
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <?php
     include 'header.php';
 ?>
-    
-<head>
     <title>Beer Time - Brewers</title>
 </head>
     
@@ -60,7 +59,6 @@
 <?php
     include 'footer.php';
 ?>
-</body>
 <script>
     $().ready(function() {
         $('#map').hide();
@@ -115,4 +113,5 @@
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeRGYmDRGcx9vWRK9hyiPg9AWQJlw-J_4&callback=initMap">
 </script>
+</body>
 </html>

@@ -6,15 +6,12 @@
 <?php   
     include 'dbConnection.php';
     include 'header.php';
-    include 'nav.php';
 ?>
-    
-<head>
     <title>Beer Time - Login</title>
 </head>
-    
 <body>
-    <?php
+<?php
+    include 'nav.php';
         if($_SESSION) {
             echo '<script>';
                 echo 'window.history.back();';
@@ -131,11 +128,11 @@
                 <div class="col-sm-12 cards">
                     <div class="form-group">
                         <h2>Please login</h2>
-                        <label for="userName" id="loginPage">Username: </label>
-                        <input type= "test" input name ="userName" class="form-control" placeholder= "Enter Username" id="loginPage" value="<?php echo htmlspecialchars($userName); ?>"  maxlength="20" required>
+                        <label for="userName" class="loginPage">Username: </label>
+                        <input name ="userName" type="text" id="userName" class="form-control loginPage" placeholder= "Enter Username" value="<?php echo htmlspecialchars($userName); ?>"  maxlength="20" required>
                         <br>
-                        <label for="password" id="loginPage">Password: </label>
-                        <input type= "password" input name="password"  class="form-control" placeholder= "Enter Password" id="loginPage" value="<?php echo htmlspecialchars($password); ?>" maxlength="15" required >
+                        <label for="password" class="loginPage">Password: </label>
+                        <input name="password"  type="password" id="password" class="form-control loginPage" placeholder= "Enter Password" value="<?php echo htmlspecialchars($password); ?>" maxlength="15" required >
                         <br>
                         <button type="submit" class="btn btn-primary" id="loginPage">Login</button>
                     </div>
