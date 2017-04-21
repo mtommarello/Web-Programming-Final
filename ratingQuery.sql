@@ -6,3 +6,5 @@ INNER JOIN ratings ON ratings.beerID_fk= beers.beerID
 INNER JOIN finalUsers ON finalUsers.finalUserID=ratings.finalUsersID_fk
 WHERE finalUsers.userName = 'test';
 
+SELECT COUNT(beerID)
+FROM beers;
