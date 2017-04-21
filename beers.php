@@ -9,11 +9,8 @@
     include 'header.php';
     for
 ?>
-<<<<<<< HEAD
-=======
     <title>Beer Time - Beers</title>
 </head>
->>>>>>> sascha
 
 <body>
     <?php
@@ -60,11 +57,7 @@
                                         echo "Style: " . $row["beerStyle"] . "<br>";
                                         echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>';
                                         echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>';
-<<<<<<< HEAD
                                         echo '<div class="likeStatus'. $beerCount . '" id="likeStatus' . $beerCount . '"></div>';
-=======
-                                        echo '<div class="likeStatus"></div>';
->>>>>>> sascha
                                         echo '</div>';
                                     echo '</div>';
                                 echo '</div>';
