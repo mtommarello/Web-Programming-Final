@@ -3,12 +3,17 @@
 ?>
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 
 <?php
     include 'header.php';
     for
 ?>
+<<<<<<< HEAD
+=======
+    <title>Beer Time - Beers</title>
+</head>
+>>>>>>> sascha
 
 <body>
     <?php
@@ -39,7 +44,7 @@
                 $beerCount = 1;
                 if ($result = mysqli_query($dbConnection, $query)){
 
-                        echo '<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4>';
+                        echo '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12>';
                             echo '<div class="panel-group" id="accordion">';
                     while ($row = $result->fetch_assoc()) {
                                 echo '<div class="panel panel-default" data-beerStyle="'. $row["beerStyle"] . '">';
@@ -55,7 +60,11 @@
                                         echo "Style: " . $row["beerStyle"] . "<br>";
                                         echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>';
                                         echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>';
+<<<<<<< HEAD
                                         echo '<div class="likeStatus'. $beerCount . '" id="likeStatus' . $beerCount . '"></div>';
+=======
+                                        echo '<div class="likeStatus"></div>';
+>>>>>>> sascha
                                         echo '</div>';
                                     echo '</div>';
                                 echo '</div>';

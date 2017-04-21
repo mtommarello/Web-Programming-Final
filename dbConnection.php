@@ -2,7 +2,7 @@
 
     //connect to the database
 
-        $hostDB = "sis-teach-01.sis.pitt.edu";
+        $hostDB = "localhost";
         $userDB = "mit57";
         $passwordDB = "";
         $dbname = "mit57";

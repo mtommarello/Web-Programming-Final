@@ -7,7 +7,13 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="index.php"></a>
-        <a class="navbar-brand" href="index.php">Beer Time</a>
+        <?php
+            if($_SESSION) {
+                echo '<a class="navbar-brand" href="index.php">Beer Time for ' . $_SESSION['userName'] . '</a>';
+            } else {
+                echo '<a class="navbar-brand" href="index.php">Beer Time</a>';
+            }
+        ?>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -16,13 +22,13 @@
                         <li><a href="beers.php">Beers</a></li>
                         <?php
                             if($_SESSION) {
-                                echo '<li><a href="profile.php">Profile</a></li>';
+                                //echo '<li><a href="profile.php">Profile</a></li>';
                                 echo '<li><a href="logout.php">Log Out</a></li>';
                             } else {
                                 echo '<li><a href="login.php">Login</a></li>';
                             }
                         ?>
-                        <li><a href="userprofile.php">Create a Profile</a></li>
+                        <!-- <li><a href="userprofile.php">Create a Profile</a></li> -->
                         <li><a href="about.php">About</a></li>
                     </ul>
             </div><!-- /.navbar-collapse -->

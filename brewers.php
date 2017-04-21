@@ -1,10 +1,14 @@
 <?php
     session_start();
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <?php
     include 'header.php';
 ?>
+    <title>Beer Time - Brewers</title>
+</head>
+    
 <body>
     <?php
     include 'nav.php';
@@ -28,7 +32,13 @@
                                     echo '</div>';
                                     echo '<div id="brewer' . $brewerCount . '" class="panel-collapse collapse">';
                                         echo '<div class="panel-body">';
-                                        echo $row["brewersDes"] . '</div>';
+                                        echo $row["brewersDes"] . '<br><br>';
+                                        echo '<div class="hidden-md hidden-lg brewerInfo">';
+                                            echo 'Neighborhood: ' . $row["brewerLocation"] . '<br>';
+                                            echo 'Address: ' . $row["brewerAddress"] . '<br>';
+                                            echo 'Hours: ' . $row["brewersHours"];
+                                        echo '</div>';
+                                        echo '</div>';
                                     echo '</div>';
                                 echo '</div>';
                         $brewerCount++;
@@ -49,7 +59,6 @@
 <?php
     include 'footer.php';
 ?>
-</body>
 <script>
     $().ready(function() {
         $('#map').hide();
@@ -80,9 +89,9 @@
         var location = $('#accordion .in').parent().attr("data-brewerLocation");
         var address = $('#accordion .in').parent().attr("data-brewerAddress");
         var hours = $('#accordion .in').parent().attr("data-brewerHours");
-        $(".location").html(location);
-        $(".address").html(address);
-        $(".hours").html(hours);
+        $(".location").html("Neighborhood: " + location);
+        $(".address").html("Address: " + address);
+        $(".hours").html("Hours: " + hours);
         $(".location").show();
         $(".address").show();
         $(".hours").show();
@@ -104,4 +113,5 @@
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeRGYmDRGcx9vWRK9hyiPg9AWQJlw-J_4&callback=initMap">
 </script>
+</body>
 </html>
