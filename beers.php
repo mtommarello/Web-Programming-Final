@@ -56,26 +56,24 @@
                                         echo "Style: " . $row["beerStyle"] . "<br>";
                                         echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>';
                                         echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>';
-                                        if($_SESSION) {
-                                            echo '<script>';
-                                                echo '$("#beer' . $beerCount . 'Dislike").click(function) {';
-                                                    echo '$.ajax({
-                                                        url: "ajax/beerLikeStatusUpdate.php",
-                                                        type: "POST",
-                                                        data: {beer' . $beerCount . 'Like=0, userName="'$_SESSION["userName"]'"},
-                                                        success: function(data) {
-                                                            //called when successful
-                                                            $("#beer . ' $beerCount . 'Dislike").css("background-color","red");
-                                                            $("#beer . ' $beerCount . 'Like").css("background-color","none");
-                                                        },
-                                                        error: function(e) {
-                                                            //called when there is an error
-                                                            //console.log(e.message);
-                                                        }
-                                                    });';
-                                                echo '});';
-                                            echo '</script>';
-                                        }
+                                        echo '<script>';
+                                            echo '$("#beer' . $beerCount . 'Dislike").click(function) {';
+                                                echo '$.ajax({
+                                                    url: "ajax/beerLikeStatusUpdate.php",
+                                                    type: "POST",
+                                                    data: "beer' . $beerCount . 'Like=0",
+                                                    success: function(data) {
+                                                        //called when successful
+                                                        $("#beer . ' $beerCount . 'Dislike").css("background-color","red");
+                                                        $("#beer . ' $beerCount . 'Like").css("background-color","none");
+                                                    },
+                                                    error: function(e) {
+                                                        //called when there is an error
+                                                        //console.log(e.message);
+                                                    }
+                                                });';
+                                            echo '});';
+                                        echo '</script>';
                                         echo '<div class="likeStatus'. $beerCount . '" id="likeStatus' . $beerCount . '"></div>';
                                         echo '</div>';
                                     echo '</div>';
