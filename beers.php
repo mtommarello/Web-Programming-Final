@@ -3,15 +3,14 @@
 ?>
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
 
 <?php
     include 'header.php';
-    for
 ?>
     <title>Beer Time - Beers</title>
-</head>
 
+</head>
 <body>
     <?php
     include 'nav.php';
@@ -25,13 +24,13 @@
                 }
             }
     
-        for ($x = 0; $x <= $beerCount; $beerCount++){
-            if(isset($_GET['beer' . $x . 'Like'])) {
+        //for ($x = 0; $x <= $beerCount; $beerCount++){
+            //if(isset($_GET['beer' . $x . 'Like'])) {
                 
-            } else if(isset($_GET['beer' . $x . $'Dislike'])) {
+           // } else if(isset($_GET['beer' . $x . $'Dislike'])) {
                 
-            }
-        }
+           // }
+       // }
     ?>
     <script>$.backstretch("img/web-background.jpg")</script>
     <div class="container">
@@ -41,7 +40,7 @@
                 $beerCount = 1;
                 if ($result = mysqli_query($dbConnection, $query)){
 
-                        echo '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12>';
+                        echo '<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4>';
                             echo '<div class="panel-group" id="accordion">';
                     while ($row = $result->fetch_assoc()) {
                                 echo '<div class="panel panel-default" data-beerStyle="'. $row["beerStyle"] . '">';
