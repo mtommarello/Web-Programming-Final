@@ -55,6 +55,20 @@
                                         echo "ABV: " . $row["beerABV"] . "<br>";
                                         echo "Style: " . $row["beerStyle"] . "<br>";
                                         echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>';
+                                        echo '<script>';
+                                            echo '$.ajax({
+                                                url: "getTwitterFollowers.php",
+                                                type: "GET",
+                                                data: "twitterUsername=jquery4u",
+                                                success: function(data) {
+                                                    //called when successful
+                                                    $("#ajaxphp-results").html(data);
+                                                },
+                                                error: function(e) {
+                                                    //called when there is an error
+                                                    //console.log(e.message);
+                                                }
+                                            });';
                                         echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>';
                                         echo '<div class="likeStatus'. $beerCount . '" id="likeStatus' . $beerCount . '"></div>';
                                         echo '</div>';
