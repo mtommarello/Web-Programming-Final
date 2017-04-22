@@ -15,14 +15,14 @@
     <?php
     include 'nav.php';
     include 'dbConnection.php';
-            $query= "SELECT COUNT(beerID)
-            FROM beers";
-            $beerCount = 0;
-            if ($result = mysqli_query($dbConnection, $query)){
-                while ($row = $result->fetch_assoc()){
-                    $beerCount = $row["COUNT(beerID)"];
-                }
-            }
+            //$query= "SELECT COUNT(beerID)
+            //FROM beers";
+            //$beerCount = 0;
+            //if ($result = mysqli_query($dbConnection, $query)){
+              //  while ($row = $result->fetch_assoc()){
+                //    $beerCount = $row["COUNT(beerID)"];
+                //}
+            //}
     
         //for ($x = 0; $x <= $beerCount; $beerCount++){
             //if(isset($_GET['beer' . $x . 'Like'])) {
@@ -62,8 +62,8 @@
                                                     echo '$.ajax({
                                                         url: "ajax/beerLikeStatusUpdate.php",
                                                         type: "POST",
-                                                        data: {beerID: ' . $beerCount . ', LikeStatus: 0},
-                                                        success: function() {
+                                                        data: {"beerID": ' . $beerCount . ', "likeStatus": 0},
+                                                        success: function(data) {
                                                             //called when successful
                                                             $("#beer' . $beerCount . 'Dislike").css("background-color","red");
                                                             $("#beer' . $beerCount . 'Like").css("background-color","transparent");
@@ -79,7 +79,7 @@
                                                     echo '$.ajax({
                                                         url: "ajax/beerLikeStatusUpdate.php",
                                                         type: "POST",
-                                                        data: {beerID: ' . $beerCount . ', LikeStatus: 1},
+                                                        data: {"beerID": ' . $beerCount . ', "likeStatus": 1},
                                                         success: function() {
                                                             //called when successful
                                                             $("#beer' . $beerCount . 'Dislike").css("background-color","transparent");
@@ -110,18 +110,15 @@
 
     <?php
         if ($_SESSION) {
-            $query = 'SELECT ratings.ratingsID, ratings.rating, beers.beerName, beers.beerABV, beers.beerStyle, finalUsers.userName
-            FROM beers
-            INNER JOIN ratings ON ratings.beerID_fk= beers.beerID
-            INNER JOIN finalUsers ON finalUsers.finalUserID=ratings.finalUsersID_fk
-            WHERE finalUsers.userName = "' . $_SESSION["userName"] . '";';
+            $query2 = 'SELECT * from ratings WHERE finalUsersID_fk = ' . $_SESSION["userID"] . ';';
+            //$query = 'SELECT ratings.ratingsID, ratings.rating, ratings.finalUsersID_fk, beers.beerName, beers.beerABV, beers.beerStyle, finalUsers.userName FROM beers INNER JOIN ratings ON ratings.beerID_fk= beers.beerID INNER JOIN finalUsers ON finalUsers.finalUserID=ratings.finalUsersID_fk WHERE ratings.finalUserID_fk = "' . $_SESSION["userID"] . '";';
             $beerCount = 1;
-            if ($result = mysqli_query($dbConnection, $query)){
-                while($row = $result->fetch_assoc()) {
-                    if ($_SESSION["userName"] == $row['userName']) {
+            if ($result2 = mysqli_query($dbConnection, $query2)){
+                while($row = $result2->fetch_assoc()) {
+                    if ($beerCount = $row['beerID_fk']) {
                         echo '<script>';
                             if($row["rating"] == 0) {
-                                echo '$("#beer'. $beerCount . 'Disike").css("background-color","red");';
+                                echo '$("#beer'. $beerCount . 'Dislike").css("background-color","red");';
                             } else if($row["rating"] == 1) {
                                 echo '$("#beer'. $beerCount . 'Like").css("background-color","green");';
                             }
