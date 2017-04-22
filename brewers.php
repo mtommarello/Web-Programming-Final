@@ -73,7 +73,6 @@
             zoom: 16,
             center: uluru
         });
-        console.log(uluru);
         var marker = new google.maps.Marker({
             position: uluru,
             map: map
