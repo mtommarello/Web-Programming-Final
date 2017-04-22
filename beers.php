@@ -13,26 +13,29 @@
 </head>
 <body>
     <?php
-    include 'nav.php';
-    include 'dbConnection.php';
-            $query= "SELECT COUNT(beerID)
-            FROM beers";
-            $beerCount = 0;
-            if ($result = mysqli_query($dbConnection, $query)){
-                while ($row = $result->fetch_assoc()){
-                    $beerCount = $row["COUNT(beerID)"];
-                }
-            }
-    
-        //for ($x = 0; $x <= $beerCount; $beerCount++){
-            //if(isset($_GET['beer' . $x . 'Like'])) {
-                
-           // } else if(isset($_GET['beer' . $x . $'Dislike'])) {
-                
-           // }
-       // }
+        include 'nav.php';
+        include 'dbConnection.php';
     ?>
-    <script>$.backstretch("img/web-background.jpg")</script>
+    <script>
+        $.backstretch("img/web-background.jpg");
+    
+        function calculateTotals(beerID) {
+            var elementID = "#likePercentage" + beerID;
+            $.ajax({
+                url: "ajax/beerLikeCalculation.php",
+                type: "POST",
+                data: {"beerID": beerID},
+                success: function(data) {
+                    //called when successful
+                    $(elementID).html(data);
+                },
+                error: function(e) {
+                    //called when there is an error
+                    //console.log(e.message);
+                }
+            });
+        }
+    </script>
     <div class="container">
         <div class="row animated zoomIn">
             <?php
@@ -56,16 +59,104 @@
                                         echo "Style: " . $row["beerStyle"] . "<br>";
                                         echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>';
                                         echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>';
-                                        echo '<div class="likeStatus'. $beerCount . '" id="likeStatus' . $beerCount . '"></div>';
+                                        if($_SESSION) {
+                                            echo '<script>';
+                                                echo '$("#beer' . $beerCount . 'Dislike").click(function() {';
+                                                    echo 'if($(this).hasClass("active")) {';
+                                                        echo '$.ajax({
+                                                            url: "ajax/beerLikeStatusUpdate.php",
+                                                            type: "POST",
+                                                            data: {"beerID": ' . $beerCount . ', "likeStatus": -1},
+                                                            success: function(data) {
+                                                                //called when successful
+                                                                $("#beer' . $beerCount . 'Dislike").css("background-color","transparent");
+                                                                $("#beer' . $beerCount . 'Like").css("background-color","transparent");
+                                                                $("#beer' . $beerCount . 'Dislike").removeClass("active");
+                                                                calculateTotals(' . $beerCount . ');
+                                                            },
+                                                            error: function(e) {
+                                                                //called when there is an error
+                                                                //console.log(e.message);
+                                                            }
+                                                        });';
+                                                    echo '} else {';
+                                                        echo '$.ajax({
+                                                            url: "ajax/beerLikeStatusUpdate.php",
+                                                            type: "POST",
+                                                            data: {"beerID": ' . $beerCount . ', "likeStatus": 0},
+                                                            success: function(data) {
+                                                                //called when successful
+                                                                $("#beer' . $beerCount . 'Dislike").css("background-color","red");
+                                                                $("#beer' . $beerCount . 'Like").css("background-color","transparent");
+                                                                $("#beer' . $beerCount . 'Dislike").addClass("active");
+                                                                $("#beer' . $beerCount . 'Like").removeClass("active");
+                                                                calculateTotals(' . $beerCount . ');
+                                                            },
+                                                            error: function(e) {
+                                                                //called when there is an error
+                                                                //console.log(e.message);
+                                                            }
+                                                        });';
+                                                    echo '}';
+                                                echo '});';
+                                            
+                                                echo '$("#beer' . $beerCount . 'Like").click(function() {';
+                                                    echo 'if($(this).hasClass("active")) {';
+                                                        echo '$.ajax({
+                                                            url: "ajax/beerLikeStatusUpdate.php",
+                                                            type: "POST",
+                                                            data: {"beerID": ' . $beerCount . ', "likeStatus": -1},
+                                                            success: function(data) {
+                                                                //called when successful
+                                                                $("#beer' . $beerCount . 'Dislike").css("background-color","transparent");
+                                                                $("#beer' . $beerCount . 'Like").css("background-color","transparent");
+                                                                $("#beer' . $beerCount . 'Like").removeClass("active");
+                                                                calculateTotals(' . $beerCount . ');
+                                                            },
+                                                            error: function(e) {
+                                                                //called when there is an error
+                                                                //console.log(e.message);
+                                                            }
+                                                        });';
+                                                    echo '} else {';
+                                                        echo '$.ajax({
+                                                            url: "ajax/beerLikeStatusUpdate.php",
+                                                            type: "POST",
+                                                            data: {"beerID": ' . $beerCount . ', "likeStatus": 1},
+                                                            success: function() {
+                                                                //called when successful
+                                                                $("#beer' . $beerCount . 'Dislike").css("background-color","transparent");
+                                                                $("#beer' . $beerCount . 'Like").css("background-color","green");
+                                                                $("#beer' . $beerCount . 'Like").addClass("active");
+                                                                $("#beer' . $beerCount . 'Dislike").removeClass("active");
+                                                                calculateTotals(' . $beerCount . ');
+                                                            },
+                                                            error: function(e) {
+                                                                //called when there is an error
+                                                                //console.log(e.message);
+                                                            }
+                                                        });';
+                                                    echo '}';
+                                                echo '});';
+                                            echo '</script>';
+                                        } else {
+                                            echo '<script>';
+                                                echo '$("#beer' . $beerCount . 'Dislike").click(function() {';
+                                                    echo '$(location).attr("href", "login.php");';
+                                                echo '});';
+                                                echo '$("#beer' . $beerCount . 'Like").click(function() {';
+                                                    echo '$(location).attr("href", "login.php");';
+                                                echo '});';
+                                            echo '</script>';
+                                        }
+                                        echo '<div class="likePercentage'. $beerCount . '" id="likePercentage' . $beerCount . '"></div>';
+                                        echo '<script>calculateTotals(' . $beerCount . ');</script>';
                                         echo '</div>';
                                     echo '</div>';
                                 echo '</div>';
                         $beerCount++;
                     }
-   
                         echo '</div>';
-                    
- 
                 }
             ?>
         </div>
@@ -73,20 +164,18 @@
 
     <?php
         if ($_SESSION) {
-            $query = 'SELECT ratings.ratingsID, ratings.rating, beers.beerName, beers.beerABV, beers.beerStyle, finalUsers.userName
-            FROM beers
-            INNER JOIN ratings ON ratings.beerID_fk= beers.beerID
-            INNER JOIN finalUsers ON finalUsers.finalUserID=ratings.finalUsersID_fk
-            WHERE finalUsers.userName = "' . $_SESSION["userName"] . '";';
+            $query2 = 'SELECT * from ratings WHERE finalUsersID_fk = ' . $_SESSION["userID"] . ';';
             $beerCount = 1;
-            if ($result = mysqli_query($dbConnection, $query)){
-                while($row = $result->fetch_assoc()) {
-                    if ($_SESSION["userName"] == $row['userName']) {
+            if ($result2 = mysqli_query($dbConnection, $query2)){
+                while($row = $result2->fetch_assoc()) {
+                    if ($beerCount = $row['beerID_fk']) {
                         echo '<script>';
                             if($row["rating"] == 0) {
-                                echo '$("#beer'. $beerCount . 'Disike").css("background-color","red");';
+                                echo '$("#beer'. $beerCount . 'Dislike").css("background-color","red");';
+                                echo '$("#beer'. $beerCount . 'Dislike").addClass("active");';
                             } else if($row["rating"] == 1) {
                                 echo '$("#beer'. $beerCount . 'Like").css("background-color","green");';
+                                echo '$("#beer'. $beerCount . 'Like").addClass("active");';
                             }
                         echo '</script>';
                     }
