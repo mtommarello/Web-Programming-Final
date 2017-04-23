@@ -74,7 +74,7 @@
                                     echo '<div id="beer' . $beerCount . '" class="panel-collapse collapse">';
                                     echo '<div class="panel-body">';
                                         echo $row["beerName"] . "<br>";
-                                        echo "ABV: " . $row["beerABV"] . "<br>";
+                                        echo "ABV: " . $row["beerABV"] . "%<br>";
                                         echo "Style: " . $row["beerStyle"] . "<br>";
                                         echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>';
                                         echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>';
