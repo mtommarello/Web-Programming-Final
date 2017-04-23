@@ -73,7 +73,7 @@
                 {
 
                     //check username & password to the database
-                    $queryUser =  "SELECT finalUserID FROM finalUsers ";
+                    $queryUser =  "SELECT finalUserID, fName FROM finalUsers ";
                     $queryUser .= "WHERE userName ='{$userName}' AND password ='{$password}';";
 
                     
@@ -82,8 +82,9 @@
 
                         while($row = mysqli_fetch_row($resultUser)){
                             foreach($row as $key=> $col){
-                                   $_SESSION['userID'] =$col;
-                                  }
+                                $_SESSION['userID'] = $col;
+                                $_SESSION['fName'] = $col;
+                            }
                         }
                         mysqli_close($dbConnection);
                         echo '<script>';

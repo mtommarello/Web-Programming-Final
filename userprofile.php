@@ -18,7 +18,7 @@ if ($_POST) {
 			$counter++;
 		}
 		else {
-			$fName = $_POST["fName"];
+            $fName = mysqli_real_escape_string($dbConnection,$_POST['fName']);
 		}
 		
 	// last name 
@@ -30,7 +30,7 @@ if ($_POST) {
 			$counter++;
 		}
 		else {
-			$lName = $_POST["lName"];
+            $lName = mysqli_real_escape_string($dbConnection,$_POST['lName']);
 		}
 	
 	// username  
@@ -42,7 +42,7 @@ if ($_POST) {
 			$counter++;
 		}
 		else {
-			$userName = $_POST["userName"];
+            $userName = mysqli_real_escape_string($dbConnection,$_POST['userName']);
 		}
 		
 	// password
@@ -54,7 +54,7 @@ if ($_POST) {
 			$counter++;
 		}
 		else {
-			$password = $_POST["password"];
+            $password = mysqli_real_escape_string($dbConnection,$_POST['password']);
 		}
 		
 	// phone number 	
@@ -62,7 +62,7 @@ if ($_POST) {
 			$phoneErr = "Phone Number Required.<br>";
 			$counter++;;
 		} else {
-			$phone = $_POST["phoneNumber"];
+            $phone = mysqli_real_escape_string($dbConnection,$_POST['phoneNumber']);
 		}
 		
 	// age 
@@ -74,7 +74,7 @@ if ($_POST) {
 		 	$counter++;
 		}	
 		else {
-			$age = $_POST["age"];
+            $age = mysqli_real_escape_string($dbConnection,$_POST['age']);
 		}
 	
 	// email
@@ -86,7 +86,7 @@ if ($_POST) {
 			$counter++;
 		} 
 		else {
-			$email = $_POST["email"];
+            $email = mysqli_real_escape_string($dbConnection,$_POST['email']);
 		}
     
         if($counter == 0) {
