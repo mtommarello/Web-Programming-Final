@@ -175,3 +175,16 @@ footer {
     border: 10px solid #000000;
     padding: 10px;
 }
+
+.col-md-6.col-lg-6.cards{
+    background-color:#D3D7E0;
+    opacity: 0.9;
+    color: #000000;
+    text-align: center;
+    border: 10px solid #000000;
+    padding: 10px;
+}
+
+.profile {
+   border: 10px solid #000000;
+}

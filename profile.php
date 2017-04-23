@@ -1,27 +1,84 @@
+<?php
+    session_start();
+    if($_SESSION) {
+    } else {
+        header("location:login.php");
+    }
+?>
+<!DOCTYPE html>
 <html>
-<head>
-	<meta charset ="utf-8">
-		<title> Login </title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+<?php
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+    include 'header.php';
+    include 'dbConnection.php';
+?>
+    <title>Beer Time - Profile</title>
 </head>
 
 <body>
 	<?php
-	session_start();
-	if($_SESSION) {
-		include 'nav.php';
-		echo("<p>Welcome, " . $_SESSION['userName'] . ".");
-	} else {
-		header("location:login.php");
-	}
+        include 'nav.php';
 	?>
+
+    <script>$.backstretch("img/web-background.jpg")</script>
 	
+    <div class="container animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12 cards profile">
+                <?php
+                    $queryName = 'SELECT fName, lName FROM finalUsers WHERE finalUserID = ' . $_SESSION["userID"] . ';';
+                
+                    if ($result = mysqli_query($dbConnection, $queryName)){
+                        $row = $result->fetch_row();
+                        $firstName = $row[0];
+                        $lastName = $row[1];
+                        echo "<h2>" . $firstName . " " . $lastName . "</h2>";
+                    }
+
+                    $queryLike = 'SELECT COUNT(*) FROM ratings WHERE finalUsersID_fk = ' . $_SESSION["userID"] . ' AND rating = 1;';
+
+                    if ($result = mysqli_query($dbConnection, $queryLike)){
+                        $row = $result->fetch_row();
+                        $userLikes = $row[0];
+                        echo "<p>Beers Liked: " . $userLikes . "</p>";
+                    }
+                
+                    $queryDislike = 'SELECT COUNT(*) FROM ratings WHERE finalUsersID_fk = ' . $_SESSION["userID"] . ' AND rating = 0;';
+
+                    if ($result = mysqli_query($dbConnection, $queryDislike)){
+                        $row = $result->fetch_row();
+                        $userDislikes = $row[0];
+                        echo "<p>Beers Disliked: " . $userDislikes . "</p>";
+                    }
+                ?>
+            </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cards">
+                <h2>Beers Rated</h2>
+                <?php
+                    $query = "SELECT ratings.rating, beers.beerName FROM ratings INNER JOIN beers on ratings.beerID_fk = beers.beerID WHERE ratings.finalUsersID_fk = " . $_SESSION['userID'] . ";";
+                    if ($result = mysqli_query($dbConnection, $query)){
+                        while ($row = $result->fetch_assoc()) {
+                            $beerName = $row["beerName"];
+                            $rating = $row["rating"];
+                            if($rating == 0) {
+                                echo "<h3>" . $beerName . ": Dislike</h3>";
+                            } else if($rating == 1) {
+                                echo "<h3>" . $beerName . ": Like</h3>";
+                            }
+                        }
+                    }
+                ?>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cards">
+                <h2>Beers Reviewed</h2>
+                <h3>Sample Beer Name</h3>
+                <p>Beer Review</p>
+            </div>
+        </div>
+    
+    </div>
 
 </body>
 </html>
