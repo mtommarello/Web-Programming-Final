@@ -9,7 +9,7 @@
         <a class="navbar-brand" href="index.php"></a>
         <?php
             if($_SESSION) {
-                echo '<a class="navbar-brand" href="index.php">Beer Time for ' . $_SESSION['userName'] . '</a>';
+                echo '<a class="navbar-brand" href="index.php">Beer Time for ' . $_SESSION['fName'] . '</a>';
             } else {
                 echo '<a class="navbar-brand" href="index.php">Beer Time</a>';
             }

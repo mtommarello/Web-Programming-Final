@@ -38,6 +38,25 @@
     </script>
     <div class="container">
         <div class="row animated zoomIn">
+            <div class="col-xs-12 col-sm-12 hidden-md hidden-lg sortBeers">
+                <h3>Sort Beers</h3>
+                <div class="radio">
+                    <label class="beerSort"><input type="radio" name="beerSort" value="beerName">Name</label>
+                </div>
+                <div class="radio">
+                    <label class="beerSort"><input type="radio" name="beerSort" value="beerABV">Beer ABV</label>
+                </div>
+                <div class="radio">
+                    <label class="beerSort"><input type="radio" name="beerSort" value="style">Beer Style</label>
+                </div>
+                <div class="radio">
+                    <label class="beerSort"><input type="radio" name="beerSort" value="brewer">Brewer</label>
+                </div>
+                <div class="radio">
+                    <label class="beerSort"><input type="radio" name="beerSort" value="none" checked="checked">None</label>
+                </div>
+            </div>
+            <div id="beerList">
             <?php
                 $query = "SELECT beerName, beerABV, beerStyle FROM beers";
                 $beerCount = 1;
@@ -159,14 +178,70 @@
                         echo '</div>';
                 }
             ?>
-            <div class="hidden-xs hidden-sm col-md-8 col-lg-8 brewerDesc">
+            </div>
+            <div class="hidden-xs hidden-sm col-md-6 col-lg-6 cards">
                 <h2 class="beerClosed">Select a Beer on the Left</h2>
                 <h2 class="beerOpen"></h2>
                 <div class="beerWriteReview"></div>
                 <div class="beerViewReviews"></div>
             </div>
+            <div class="hidden-xs hidden-sm col-md-2 col-lg-2 sortBeers">
+                <h3>Sort Beers</h3>
+                <div class="radio">
+                    <label class="beerSort"><input type="radio" name="beerSort" value="beerName">Name</label>
+                </div>
+                <div class="radio">
+                    <label class="beerSort"><input type="radio" name="beerSort" value="beerABV">Beer ABV</label>
+                </div>
+                <div class="radio">
+                    <label class="beerSort"><input type="radio" name="beerSort" value="style">Beer Style</label>
+                </div>
+                <div class="radio">
+                    <label class="beerSort"><input type="radio" name="beerSort" value="brewer">Brewer</label>
+                </div>
+                <div class="radio">
+                    <label class="beerSort"><input type="radio" name="beerSort" value="none" checked="checked">None</label>
+                </div>
+            </div>
         </div>
     </div>
+    
+    <script>
+        $('input[type=radio][name="beerSort"]').change(function() {
+            var beerSortMethodValue = "none";
+            if (this.value == "beerName") {
+                beerSortMethodValue = "beerName";
+                console.log("beerName");
+            }
+            if (this.value == "beerABV") {
+                beerSortMethodValue = "beerABV";
+                console.log("beerABV");
+            } else if (this.value == "style") {
+                beerSortMethodValue = "style";
+                console.log("style");
+            } else if (this.value == "brewer") {
+                beerSortMethodValue = "brewer";
+                console.log("brewer");
+            } else if (this.value == "none") {
+                beerSortMethodValue = "none";
+                console.log("none");
+            }
+            $.ajax({
+                url: "ajax/beerGrouping.php",
+                type: "POST",
+                data: {"beerSortMethod": beerSortMethodValue},
+                success: function(newList) {
+                    //called when successful
+                    $("#beerList").empty;
+                    $("#beerList").html(newList);
+                },
+                error: function(e) {
+                    //called when there is an error
+                    //console.log(e.message);
+                }
+            });
+        });
+    </script>
 
     <?php
         if ($_SESSION) {
