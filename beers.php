@@ -159,6 +159,12 @@
                         echo '</div>';
                 }
             ?>
+            <div class="hidden-xs hidden-sm col-md-8 col-lg-8 brewerDesc">
+                <h2 class="beerClosed">Select a Beer on the Left</h2>
+                <h2 class="beerOpen"></h2>
+                <div class="beerWriteReview"></div>
+                <div class="beerViewReviews"></div>
+            </div>
         </div>
     </div>
 
