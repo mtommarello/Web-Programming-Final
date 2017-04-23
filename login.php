@@ -73,28 +73,11 @@
                 {
 
                     //check username & password to the database
-                    $queryUser =  "SELECT idusers FROM users ";
-                    $queryUser .= "WHERE userName ='{$userName}' AND userPassword ='{$password}' ";
+                    $queryUser =  "SELECT finalUserID FROM finalUsers ";
+                    $queryUser .= "WHERE userName ='{$userName}' AND password ='{$password}';";
 
-                    $resultUser = mysqli_query($dbConnection, $queryUser);
-
-                    $returnedRows=mysqli_num_rows($resultUser);
-
-                    //if no matches found in database
-                    if($returnedRows == 0){
-                        echo '<div class="container">';
-                            echo '<div class="row">';
-                                echo '<div class="col-sm-12">';
-                                    echo '<div class="alert alert-danger alert-dismissable">';
-                                        echo '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
-                                        echo '<strong>Error: username, password, or both incorrect.</strong>';
-                                    echo '</div>';
-                                echo '</div>';
-                            echo '</div>';
-                        echo '</div>';
-                    }
-
-                    else{
+                    
+                    if ($resultUser = mysqli_query($dbConnection, $queryUser)){
                         $_SESSION['userName'] = $userName;
 
                         while($row = mysqli_fetch_row($resultUser)){
@@ -106,6 +89,17 @@
                         echo '<script>';
                             echo 'window.history.back();';
                         echo '</script>';
+                    } else {
+                        echo '<div class="container">';
+                            echo '<div class="row">';
+                                echo '<div class="col-sm-12">';
+                                    echo '<div class="alert alert-danger alert-dismissable">';
+                                        echo '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+                                        echo '<strong>Error: username, password, or both incorrect.</strong>';
+                                    echo '</div>';
+                                echo '</div>';
+                            echo '</div>';
+                        echo '</div>';
                     }
                 }
             }
@@ -126,16 +120,19 @@
         <div class="container">
             <div class="row animated fadeIn">
                 <div class="col-sm-12 cards">
+                    <h2>Please login</h2>
                     <div class="form-group">
-                        <h2>Please login</h2>
                         <label for="userName" class="loginPage">Username: </label>
                         <input name ="userName" type="text" id="userName" class="form-control loginPage" placeholder= "Enter Username" value="<?php echo htmlspecialchars($userName); ?>"  maxlength="20" required>
-                        <br>
+                    </div>
+                    <div class="form-group">
                         <label for="password" class="loginPage">Password: </label>
                         <input name="password"  type="password" id="password" class="form-control loginPage" placeholder= "Enter Password" value="<?php echo htmlspecialchars($password); ?>" maxlength="15" required >
-                        <br>
-                        <button type="submit" class="btn btn-primary" id="loginPage">Login</button>
                     </div>
+                    <button type="submit" class="btn btn-primary" id="loginPage">Login</button>
+                    <br>
+                    <br>
+                    <p>Don't have an account? <a href="userprofile.php">Click here to create one.</a></p>
                 </div>
             </div>
         </div>       

@@ -31,7 +31,14 @@
 
             <div class="container">
                 <div id="bgndVideo" class="player" data-property="{videoURL:'p1bpG5Aeux4',containment:'body',autoPlay:true, mute:true, startAt:0, opacity:.25, showControls: false}"></div>
-
+                <div class="row">
+                    <?php
+                        if($_GET){
+                            echo '<div class="alert alert-success">
+                                <strong>Success!</strong> Your user account has been successfully created. Please login to access all features of Beer Time.</div>';
+                        }
+                    ?>
+                </div>
                 <div class="row hidden-xs">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <h1>Beer Time</h1>
