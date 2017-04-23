@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include '../dbConnection.php';
     if($_POST["beerSortMethod"] == "beerName") {
         $query = "SELECT * FROM beers ORDER BY beerName";
@@ -27,7 +28,7 @@
                             echo '<div id="beer' . $row["beerID"] . '" class="panel-collapse collapse">';
                                 echo '<div class="panel-body">';
                                     echo $row["beerName"] . "<br>";
-                                    echo "ABV: " . $row["beerABV"] . "<br>";
+                                    echo "ABV: " . $row["beerABV"] . "%<br>";
                                     echo "Style: " . $row["beerStyle"] . "<br>";
                                     echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $row["beerID"] . 'Dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>';
                                     echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $row["beerID"] . 'Like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>';
