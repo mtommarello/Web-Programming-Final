@@ -196,6 +196,9 @@
             <div class="hidden-xs hidden-sm col-md-6 col-lg-6 cards">
                 <h2 class="beerClosed">Select a Beer on the Left</h2>
                 <h2 class="beerOpen"></h2>
+                <div class="beerWriteReviewButton">
+                    <button type="submit" class="btn btn-primary" id="newReviewButton">Write Review</button>
+                </div>
                 <div class="beerWriteReview"></div>
                 <div class="beerViewReviews"></div>
             </div>
