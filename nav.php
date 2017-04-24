@@ -18,18 +18,19 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="brewers.php">Brewers</a></li>
+                        <li><a href="about.php">About</a></li>
                         <li><a href="beers.php">Beers</a></li>
+                        <li><a href="brewers.php">Brewers</a></li>
                         <?php
                             if($_SESSION) {
-                                //echo '<li><a href="profile.php">Profile</a></li>';
+                                echo '<li><a href="planNight.php">Plan My Night</a></li>';
+                                echo '<li><a href="profile.php">Profile</a></li>';
                                 echo '<li><a href="logout.php">Log Out</a></li>';
                             } else {
+                                echo '<li><a href="userprofile.php">Create Account</a></li>';
                                 echo '<li><a href="login.php">Login</a></li>';
                             }
                         ?>
-                        <!-- <li><a href="userprofile.php">Create a Profile</a></li> -->
-                        <li><a href="about.php">About</a></li>
                     </ul>
             </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

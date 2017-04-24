@@ -61,11 +61,10 @@
                 $query = "SELECT beerName, beerABV, beerStyle FROM beers";
                 $beerCount = 1;
                 if ($result = mysqli_query($dbConnection, $query)){
-
                         echo '<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4>';
                             echo '<div class="panel-group" id="accordion">';
-                    while ($row = $result->fetch_assoc()) {
-                                echo '<div class="panel panel-default" data-beerStyle="'. $row["beerStyle"] . '">';
+                            while ($row = $result->fetch_assoc()) {
+                                echo '<div class="panel panel-default" data-beerStyle="'. $row["beerStyle"] . '" data-beerName="' . $row["beerName"] . '">';
                                     echo '<div class="panel-heading">';
                                         echo '<h4 class="panel-title">';
                                             echo '<a data-toggle="collapse" data-parent="#accordion" href="#beer' . $beerCount . '">' . $row["beerName"] . '</a>';
@@ -176,6 +175,21 @@
                         $beerCount++;
                     }
                         echo '</div>';
+                        echo "
+                            <script>    
+                                $('#accordion').on('shown.bs.collapse', function () {
+                                    var beerName = $('#accordion .in').parent().attr('data-beerName');
+                                    $('.beerOpen').html(beerName);
+                                    $('.beerClosed').hide();
+                                    $('.beerOpen').show();
+                                });
+
+                                $('#accordion').on('hidden.bs.collapse', function () {
+                                    $('.beerClosed').show();
+                                    $('.beerOpen').hide();
+                                });
+                            </script>
+                        ";
                 }
             ?>
             </div>
@@ -211,20 +225,15 @@
             var beerSortMethodValue = "none";
             if (this.value == "beerName") {
                 beerSortMethodValue = "beerName";
-                console.log("beerName");
             }
             if (this.value == "beerABV") {
                 beerSortMethodValue = "beerABV";
-                console.log("beerABV");
             } else if (this.value == "style") {
                 beerSortMethodValue = "style";
-                console.log("style");
             } else if (this.value == "brewer") {
                 beerSortMethodValue = "brewer";
-                console.log("brewer");
             } else if (this.value == "none") {
                 beerSortMethodValue = "none";
-                console.log("none");
             }
             $.ajax({
                 url: "ajax/beerGrouping.php",

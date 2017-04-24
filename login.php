@@ -79,12 +79,9 @@
                     
                     if ($resultUser = mysqli_query($dbConnection, $queryUser)){
                         $_SESSION['userName'] = $userName;
-
-                        while($row = mysqli_fetch_row($resultUser)){
-                            foreach($row as $key=> $col){
-                                $_SESSION['userID'] = $col;
-                                $_SESSION['fName'] = $col;
-                            }
+                        while ($row = $resultUser->fetch_assoc()) {
+                                $_SESSION['userID'] = $row['finalUserID'];
+                                $_SESSION['fName'] = $row['fName'];
                         }
                         mysqli_close($dbConnection);
                         echo '<script>';

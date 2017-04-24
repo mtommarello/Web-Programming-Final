@@ -77,8 +77,10 @@
                 <p>Beer Review</p>
             </div>
         </div>
-    
+        </div>
     </div>
-
+    <?php
+      include 'footer.php';  
+    ?>
 </body>
 </html>
