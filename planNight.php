@@ -72,14 +72,16 @@
         });
         
         $('#drinksSelected').click(function() {
+            var beerID = 0;
+            console.log("Initial beer ID is " + beerID);
             $('#selectDrinks :checked').each(function() {
                 $('#drinksSelected').prop("disabled", true);
                 var standardDrink = $(this).attr('data-standardDrink');
                 var beerName = $(this).attr('data-beerName');
-                var beerID = 0;
                 $(this).prop("disabled", true);
-                $('#addedToQuantity').append('<div class="form-group"><label for="beer' + beerID + '"</label>' + beerName + '<input type="number" class="form-control" id="beer' + beerID + '"></div>');
+                $('#addedToQuantity').append('<div class="form-group"><label for="beer' + parseInt(beerID) + '"</label>' + beerName + '<input type="number" class="form-control" id="beer' + parseInt(beerID) + '" data-standardDrink="' + parseFloat(standardDrink) + '"></div>');
                 beerID++;
+                console.log("Subsequent beer ID is " + beerID);
             });
             $('#calculateStandardDrinkButton').show();
         });
@@ -87,22 +89,24 @@
         $('#quantitySelected').click(function() {
             var standardDrinkTotal = 0;
             var calculationButtonShowValue = 0;
-            $('#addedToQuantity').each(function() {
-                var beerID = 0;
-                var standardDrinkTemp = $('#beer' + beerID).val();
-                if (standardDrinkTemp <= 0) {
+            var numberOfDrinks = 0;
+            var beerID = 0;
+            $('#addedToQuantity input[type=number]').each(function() {
+                numberOfDrinks = $('#beer' + parseInt(beerID)).val();
+                var standardDrinkTemp = $('#beer' + parseInt(beerID)).attr('data-standardDrink');
+                console.log(standardDrinkTemp);
+                if (parseInt(numberOfDrinks) <= 0) {
                     alert("Please enter a positive whole number.");
                     return false;
                 } else {
-                    $('#beer' + beerID).prop("disabled", true);
-                    standardDrinkTotal = standardDrinkTotal + +standardDrinkTemp;
-                    $('#finalTotal').append('<p>The selection you made will result in you drinking ' + standardDrinkTotal + ' standard drinks.');
+                    $('#beer' + parseInt(beerID)).prop("disabled", true);
+                    standardDrinkTotal += (numberOfDrinks * standardDrinkTemp);
                     calculationButtonShowValue = 1;
-                    
                 }
                 beerID++;
             });
-            if(calculationButtonShowValue == 1) {
+            if(parseInt(calculationButtonShowValue) == 1) {
+                $('#finalTotal').append('<p>The selection you made will result in you drinking ' + parseFloat(standardDrinkTotal) + ' standard drinks.');
                 $('#newCalculationButton').show();
                 $('#quantitySelected').prop("disabled", true);
             }
