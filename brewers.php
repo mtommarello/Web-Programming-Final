@@ -21,7 +21,7 @@
                 $query = "SELECT brewerName, brewerLocation, brewerLat, brewerLong, brewersHours, brewersDes, brewerAddress FROM brewers";
                 $brewerCount = 1;
                 if ($result = mysqli_query($dbConnection, $query)){
-                        echo '<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4>';
+                        echo '<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">';
                             echo '<div class="panel-group" id="accordion">';
                     while ($row = $result->fetch_assoc()) {
                                 echo '<div class="panel panel-default" data-lat="' . $row["brewerLat"] . '" data-long="' . $row["brewerLong"] . '" data-brewerName="' . $row["brewerName"] . '" data-brewerLocation= "' . $row["brewerLocation"] . '" data-brewerAddress="' . $row["brewerAddress"] .'" data-brewerHours="' . $row["brewersHours"] . '">';
