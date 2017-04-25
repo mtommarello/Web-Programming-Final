@@ -33,7 +33,7 @@
                 <div id="bgndVideo" class="player" data-property="{videoURL:'p1bpG5Aeux4',containment:'body',autoPlay:true, mute:true, startAt:0, opacity:.25, showControls: false}"></div>
                 <div class="row">
                     <?php
-                        if($_GET(isset['accountCreated'])) {
+                        if(isset($_GET['accountCreated'])) {
                             if($_GET['accountCreated'] == 1 ){
                                 // If the user just created an account, they will be redirected to the homepage and if a get element with accountCreated = 1 is in the URL, this confirmation message will be shown.
                                 echo '<div class="alert alert-success">
