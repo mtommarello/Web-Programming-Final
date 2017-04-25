@@ -158,6 +158,8 @@
                                     $('.beerClosed').show();
                                     $('.beerOpen').hide();
                                     $('.beerViewReviews').hide();
+                                    $('.beerWriteReviewButton').hide();
+                                    $('.beerEditDelReviewButtons').hide();
                                 });
                             </script>
                         ";

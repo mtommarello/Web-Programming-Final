@@ -204,6 +204,8 @@
                                     $('.beerClosed').show();
                                     $('.beerOpen').hide();
                                     $('.beerViewReviews').hide();
+                                    $('.beerWriteReviewButton').hide();
+                                    $('.beerEditDelReviewButtons').hide();
                                 });
                             </script>
                         ";
@@ -213,9 +215,13 @@
         </div>
             <div class="hidden-xs hidden-sm col-md-6 col-lg-6 cards">
                 <h2 class="beerClosed">Select a Beer on the Left</h2>
-                <h2 class="beerOpen"></h2>
+                <h2 class="beerOpen">JavaScript is disabled in your browser. Please enable JavaScript to enable full functionality.</h2>
                 <div class="beerWriteReviewButton">
                     <button type="submit" class="btn btn-primary" id="newReviewButton">Write Review</button>
+                </div>
+                <div class="beerEditDelReviewButtons">
+                    <button type="submit" class="btn btn-primary" id="editReviewButton">Edit Review</button>
+                    <button type="submit" class="btn btn-danger" id="deleteReviewButton">Delete Review</button>
                 </div>
                 <div class="beerWriteReview"></div>
                 <div class="beerViewReviews"></div>
@@ -241,6 +247,12 @@
         </div>
     
     <script>
+        $(function() {
+            $('.beerOpen').hide();
+            $('.beerViewReviews').hide();
+            $('.beerWriteReviewButton').hide();
+            $('.beerEditDelReviewButtons').hide();
+        });
         $('input[type=radio][name="beerSort"]').change(function() {
             var beerSortMethodValue = "none";
             if (this.value == "beerName") {
@@ -263,12 +275,72 @@
                     //called when successful
                     $("#beerList").empty;
                     $("#beerList").html(newList);
+                    $(".beerClosed").show();
+                    $(".beerOpen").hide();
+                    $(".beerWriteReviewButton").hide();
+                    $('.beerViewReviews').hide();
                 },
                 error: function(e) {
                     //called when there is an error
                     //console.log(e.message);
                 }
             });
+        });
+        $('#newReviewButton').click(function() {
+            var beerName = $('#accordion .in').parent().attr('data-beerName');
+            $.ajax({
+                url: "ajax/beerWriteReview.php",
+                type: "POST",
+                success: function(writeReviewArea) {
+                    $(".beerWriteReview").empty();
+                    $(".beerWriteReview").html(writeReviewArea);
+                    $(".beerWriteReviewButton").hide();
+                }
+            });
+        });
+        $('#editReviewButton').click(function() {
+            var beerName = $('#accordion .in').parent().attr('data-beerName');
+            $.ajax({
+                url: "ajax/beerEditReview.php",
+                type: "POST",
+                data: {"beerName": beerName},
+                success: function(editReviewArea) {
+                    $(".beerWriteReview").empty();
+                    $(".beerWriteReview").html(editReviewArea);
+                    $(".beerEditDelReviewButtons").hide();
+                }
+            })
+        });
+        $('#deleteReviewButton').click(function(){
+            var confirmDelete = confirm("By clicking OK, your review of this beer will be deleted.");
+            if (confirmDelete == true) {
+                var beerName = $('#accordion .in').parent().attr('data-beerName');
+                $.ajax({
+                    url: "ajax/beerSubmitReview.php",
+                    type: "POST",
+                    data: {"beerName": beerName, "beerReviewType": 2},
+                    success: function() {
+                        $.ajax({
+                            url: "ajax/beerViewReviews.php",
+                            type: "POST",
+                            data: {"beerName": beerName},
+                            success: function(data) {
+                                $(".beerViewReviews").html(data);
+                                if($(".viewReviewsSection").is(":empty")) {
+                                    $(".beerViewReviews").html("<h3>There are no reviews for this beer. Be the first to review this beer.</h3>");
+                                }
+                            },
+                            error: function(e) {
+                                //called when there is an error
+                                //console.log(e.message);
+                            }
+                        });
+                        $(".beerWriteReviewButton").show();
+                        $(".beerEditDelReviewButtons").hide();
+                        $(".beerWriteReview").html("Your review has been successfully deleted.");
+                    }
+                });
+            }
         });
     </script>
 
@@ -298,3 +370,4 @@
 ?>
 </body>
 </html>
+

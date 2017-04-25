@@ -48,7 +48,7 @@
             ?>
             <div class="hidden-xs hidden-sm col-md-8 col-lg-8 brewerDesc">
                 <h2 class="brewersClosed">Select a Brewer on the Left</h2>
-                <h2 class="brewersOpen"></h2>
+                <h2 class="brewersOpen">JavaScript is disabled in your browser. Please enable JavaScript to enable full functionality.</h2>
                 <div id="map"></div>
                 <div class="location"></div>
                 <div class="address"></div>
