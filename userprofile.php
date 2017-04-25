@@ -133,31 +133,31 @@ if ($_POST) {
                     ?>
                     <div class="form-group">
                         <label for="fName" class="createProfile">First Name: </label>
-                        <input type="text" name = "fName" class="form-control createProfile" value = "<?php if    (isset($_POST['fName'])){echo htmlspecialchars($fName);}?>"/>
+                        <input type="text" id="fName" name = "fName" class="form-control createProfile" value = "<?php if    (isset($_POST['fName'])){echo htmlspecialchars($fName);}?>"/>
                     </div>
                     <div class="form-group">
                         <label for="lName" class="createProfile">Last Name: </label>
-			             <input type="text" name = "lName" class="form-control createProfile" value = "<?php if (isset($_POST['lName'])){echo htmlspecialchars($lName);}?>"/>
+			             <input type="text" id= "lName" name = "lName" class="form-control createProfile" value = "<?php if (isset($_POST['lName'])){echo htmlspecialchars($lName);}?>"/>
                     </div>
                     <div class="form-group">
                         <label for="userName" class="createProfile">Username: </label>
-			             <input type="text" name = "userName" class="form-control createProfile" value = "<?php if (isset($_POST['userName'])){echo htmlspecialchars($userName);}?>"/>
+			             <input type="text" id="userName" name = "userName" class="form-control createProfile" value = "<?php if (isset($_POST['userName'])){echo htmlspecialchars($userName);}?>"/>
                     </div>
                     <div class="form-group">
                         <label for="password" class="createProfile">Password: </label>
-			             <input type="password" name = "password" class="form-control createProfile" value = "<?php if (isset($_POST['password'])){echo htmlspecialchars($password);}?>"/>
+			             <input type="password" id="password" name = "password" class="form-control createProfile" value = "<?php if (isset($_POST['password'])){echo htmlspecialchars($password);}?>"/>
                     </div>
                     <div class="form-group">
                         <label for="age" class="createProfile">Age: </label>
-                        <input type="number" name="age" class="form-control createProfile" value = "<?php if (isset($_POST['age'])){echo htmlspecialchars ($age);}?>"/>
+                        <input type="number" id="age" name="age" class="form-control createProfile" value = "<?php if (isset($_POST['age'])){echo htmlspecialchars ($age);}?>"/>
                     </div>
                     <div class="form-group">
                         <label for="email" class="createProfile">Email: </label>
-                        <input type="email" name="email" class="form-control createProfile" value = "<?php if(isset($_POST['email'])){echo htmlspecialchars ($email);}?>"/>
+                        <input type="email" id="email" name="email" class="form-control createProfile" value = "<?php if(isset($_POST['email'])){echo htmlspecialchars ($email);}?>"/>
                     </div>
                     <div class="form-group">
                         <label for="phoneNumber" class="createProfile">Phone Number: </label>
-                        <input type="tel" name="phoneNumber" class="form-control createProfile" value = "<?php if(isset($_POST['phoneNumber'])){echo htmlspecialchars ($phone);}?>"/>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control createProfile" value = "<?php if(isset($_POST['phoneNumber'])){echo htmlspecialchars ($phone);}?>"/>
                     </div>
                     <button type="submit" class="btn btn-primary" id="createProfile">Create Account</button>
                     <br>

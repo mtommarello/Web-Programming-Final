@@ -3,7 +3,7 @@
 ?>
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 
 <?php
     include 'header.php';
@@ -366,7 +366,9 @@
                 }
             }
         }
-
+    ?>
+    </div>
+<?php
     include 'footer.php';
 ?>
 </body>
