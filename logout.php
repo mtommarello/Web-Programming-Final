@@ -10,6 +10,7 @@
     <title>Beer Time - Log Out</title>
 </head> 
 <?php
+    // Destroys the session and logs the user out.  Goes back to the page that the user was on before.  If the page requires the user to be logged in, that page will redirect them to the login page.
     include 'nav.php';
     session_destroy();
     echo '<script>';

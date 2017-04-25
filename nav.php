@@ -8,6 +8,7 @@
         </button>
         <a class="navbar-brand" href="index.php"></a>
         <?php
+            // If the user is logged in, the navbar will change to reflect their first name.
             if($_SESSION) {
                 echo '<a class="navbar-brand" href="index.php">Beer Time for ' . $_SESSION['fName'] . '</a>';
             } else {
@@ -23,6 +24,7 @@
                         <li><a href="brewers.php">Brewers</a></li>
                         <?php
                             if($_SESSION) {
+                                // If the user is logged in, the 
                                 echo '<li><a href="planNight.php">Plan My Night</a></li>';
                                 echo '<li><a href="profile.php">Profile</a></li>';
                                 echo '<li><a href="logout.php">Log Out</a></li>';
