@@ -73,8 +73,19 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cards">
                 <h2>Beers Reviewed</h2>
-                <h3>Sample Beer Name</h3>
-                <p>Beer Review</p>
+                <?php
+                    $queryReviews = "SELECT * FROM reviews INNER JOIN beers on beerID_fk = beerID WHERE finalUserID_fk = " . $_SESSION["userID"] . ";";
+                    if ($result = mysqli_query($dbConnection, $queryReviews)){
+                        echo '<div class="viewReviewsSection">';
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<div class="reviewFor' . $row["beerName"] . '">';
+                                echo '<h3>' . $row["beerName"] . '</h3>';
+                                    echo '<p>' . $row["review"] . '</p>';
+                            echo '</div>';
+                        }
+                        echo '</div>';
+                    }
+                ?>
             </div>
         </div>
         </div>

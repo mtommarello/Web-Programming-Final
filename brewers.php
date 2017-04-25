@@ -21,7 +21,7 @@
                 $query = "SELECT brewerName, brewerLocation, brewerLat, brewerLong, brewersHours, brewersDes, brewerAddress FROM brewers";
                 $brewerCount = 1;
                 if ($result = mysqli_query($dbConnection, $query)){
-                        echo '<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4>';
+                        echo '<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">';
                             echo '<div class="panel-group" id="accordion">';
                     while ($row = $result->fetch_assoc()) {
                                 echo '<div class="panel panel-default" data-lat="' . $row["brewerLat"] . '" data-long="' . $row["brewerLong"] . '" data-brewerName="' . $row["brewerName"] . '" data-brewerLocation= "' . $row["brewerLocation"] . '" data-brewerAddress="' . $row["brewerAddress"] .'" data-brewerHours="' . $row["brewersHours"] . '">';
@@ -48,7 +48,7 @@
             ?>
             <div class="hidden-xs hidden-sm col-md-8 col-lg-8 brewerDesc">
                 <h2 class="brewersClosed">Select a Brewer on the Left</h2>
-                <h2 class="brewersOpen"></h2>
+                <h2 class="brewersOpen">JavaScript is disabled in your browser. Please enable JavaScript to enable full functionality.</h2>
                 <div id="map"></div>
                 <div class="location"></div>
                 <div class="address"></div>

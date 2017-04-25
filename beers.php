@@ -61,27 +61,27 @@
                 $query = "SELECT beerName, beerABV, beerStyle FROM beers";
                 $beerCount = 1;
                 if ($result = mysqli_query($dbConnection, $query)){
-                        echo '<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4>';
-                            echo '<div class="panel-group" id="accordion">';
+                        echo '<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="panel-group" id="accordion">';
                             while ($row = $result->fetch_assoc()) {
-                                echo '<div class="panel panel-default" data-beerStyle="'. $row["beerStyle"] . '" data-beerName="' . $row["beerName"] . '">';
-                                    echo '<div class="panel-heading">';
-                                        echo '<h4 class="panel-title">';
-                                            echo '<a data-toggle="collapse" data-parent="#accordion" href="#beer' . $beerCount . '">' . $row["beerName"] . '</a>';
-                                        echo '</h4>';
-                                    echo '</div>';
-                                    echo '<div id="beer' . $beerCount . '" class="panel-collapse collapse">';
-                                    echo '<div class="panel-body">';
-                                        echo $row["beerName"] . "<br>";
-                                        echo "ABV: " . $row["beerABV"] . "%<br>";
-                                        echo "Style: " . $row["beerStyle"] . "<br>";
-                                        echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>';
-                                        echo '<button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>';
+                                echo '<div class="panel panel-default" data-beerStyle="'. $row["beerStyle"] . '" data-beerName="' . $row["beerName"] . '">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#beer' . $beerCount . '">' . $row["beerName"] . '</a>
+                                        </h4>
+                                    </div>
+                                    <div id="beer' . $beerCount . '" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        ' . $row["beerName"] . '<br>
+                                        ABV: ' . $row["beerABV"] . '%<br>
+                                        Style: ' . $row["beerStyle"] . '<br>
+                                        <button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
+                                        <button class="ui-button ui-widget ui-corner-all" id="beer'. $beerCount . 'Like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>';
                                         if($_SESSION) {
-                                            echo '<script>';
-                                                echo '$("#beer' . $beerCount . 'Dislike").click(function() {';
-                                                    echo 'if($(this).hasClass("active")) {';
-                                                        echo '$.ajax({
+                                            echo '<script>
+                                                $("#beer' . $beerCount . 'Dislike").click(function() {
+                                                    if($(this).hasClass("active")) {
+                                                        $.ajax({
                                                             url: "ajax/beerLikeStatusUpdate.php",
                                                             type: "POST",
                                                             data: {"beerID": ' . $beerCount . ', "likeStatus": -1},
@@ -96,9 +96,9 @@
                                                                 //called when there is an error
                                                                 //console.log(e.message);
                                                             }
-                                                        });';
-                                                    echo '} else {';
-                                                        echo '$.ajax({
+                                                        });
+                                                    } else {
+                                                        $.ajax({
                                                             url: "ajax/beerLikeStatusUpdate.php",
                                                             type: "POST",
                                                             data: {"beerID": ' . $beerCount . ', "likeStatus": 0},
@@ -114,13 +114,13 @@
                                                                 //called when there is an error
                                                                 //console.log(e.message);
                                                             }
-                                                        });';
-                                                    echo '}';
-                                                echo '});';
+                                                        });
+                                                    }
+                                                });
                                             
-                                                echo '$("#beer' . $beerCount . 'Like").click(function() {';
-                                                    echo 'if($(this).hasClass("active")) {';
-                                                        echo '$.ajax({
+                                                $("#beer' . $beerCount . 'Like").click(function() {
+                                                    if($(this).hasClass("active")) {
+                                                        $.ajax({
                                                             url: "ajax/beerLikeStatusUpdate.php",
                                                             type: "POST",
                                                             data: {"beerID": ' . $beerCount . ', "likeStatus": -1},
@@ -135,9 +135,9 @@
                                                                 //called when there is an error
                                                                 //console.log(e.message);
                                                             }
-                                                        });';
-                                                    echo '} else {';
-                                                        echo '$.ajax({
+                                                        });
+                                                    } else {
+                                                        $.ajax({
                                                             url: "ajax/beerLikeStatusUpdate.php",
                                                             type: "POST",
                                                             data: {"beerID": ' . $beerCount . ', "likeStatus": 1},
@@ -153,51 +153,75 @@
                                                                 //called when there is an error
                                                                 //console.log(e.message);
                                                             }
-                                                        });';
-                                                    echo '}';
-                                                echo '});';
-                                            echo '</script>';
+                                                        });
+                                                    }
+                                                });
+                                            </script>';
                                         } else {
-                                            echo '<script>';
-                                                echo '$("#beer' . $beerCount . 'Dislike").click(function() {';
-                                                    echo '$(location).attr("href", "login.php");';
-                                                echo '});';
-                                                echo '$("#beer' . $beerCount . 'Like").click(function() {';
-                                                    echo '$(location).attr("href", "login.php");';
-                                                echo '});';
-                                            echo '</script>';
+                                            echo '<script>
+                                                $("#beer' . $beerCount . 'Dislike").click(function() {';
+                                                    echo '$(location).attr("href", "login.php");
+                                                });
+                                                $("#beer' . $beerCount . 'Like").click(function() {';
+                                                    echo '$(location).attr("href", "login.php");
+                                                });
+                                            </script>';
                                         }
-                                        echo '<div class="likePercentage'. $beerCount . '" id="likePercentage' . $beerCount . '"></div>';
-                                        echo '<script>calculateTotals(' . $beerCount . ');</script>';
-                                        echo '</div>';
-                                    echo '</div>';
-                                echo '</div>';
+                                        echo '<div class="likePercentage'. $beerCount . '" id="likePercentage' . $beerCount . '"></div>
+                                        <script>calculateTotals(' . $beerCount . ');</script>
+                                        </div>
+                                    </div>
+                                </div>';
                         $beerCount++;
                     }
-                        echo '</div>';
-                        echo "
+                        echo "</div>
                             <script>    
                                 $('#accordion').on('shown.bs.collapse', function () {
                                     var beerName = $('#accordion .in').parent().attr('data-beerName');
                                     $('.beerOpen').html(beerName);
                                     $('.beerClosed').hide();
                                     $('.beerOpen').show();
+                                    var beerID = 
+                                    $.ajax({
+                                        url: 'ajax/beerViewReviews.php',
+                                        type: 'POST',
+                                        data: {'beerName': beerName},
+                                        success: function(data) {
+                                            $('.beerViewReviews').show();
+                                            $('.beerViewReviews').html(data);
+                                            if($('.viewReviewsSection').is(':empty')) {
+                                                $('.beerViewReviews').html('<h3>There are no reviews for this beer. Be the first to review this beer.</h3>');
+                                            }
+                                        },
+                                        error: function(e) {
+                                            //called when there is an error
+                                            //console.log(e.message);
+                                        }
+                                    });
                                 });
 
                                 $('#accordion').on('hidden.bs.collapse', function () {
                                     $('.beerClosed').show();
                                     $('.beerOpen').hide();
+                                    $('.beerViewReviews').hide();
+                                    $('.beerWriteReviewButton').hide();
+                                    $('.beerEditDelReviewButtons').hide();
                                 });
                             </script>
                         ";
                 }
             ?>
             </div>
+        </div>
             <div class="hidden-xs hidden-sm col-md-6 col-lg-6 cards">
                 <h2 class="beerClosed">Select a Beer on the Left</h2>
-                <h2 class="beerOpen"></h2>
+                <h2 class="beerOpen">JavaScript is disabled in your browser. Please enable JavaScript to enable full functionality.</h2>
                 <div class="beerWriteReviewButton">
                     <button type="submit" class="btn btn-primary" id="newReviewButton">Write Review</button>
+                </div>
+                <div class="beerEditDelReviewButtons">
+                    <button type="submit" class="btn btn-primary" id="editReviewButton">Edit Review</button>
+                    <button type="submit" class="btn btn-danger" id="deleteReviewButton">Delete Review</button>
                 </div>
                 <div class="beerWriteReview"></div>
                 <div class="beerViewReviews"></div>
@@ -221,9 +245,14 @@
                 </div>
             </div>
         </div>
-    </div>
     
     <script>
+        $(function() {
+            $('.beerOpen').hide();
+            $('.beerViewReviews').hide();
+            $('.beerWriteReviewButton').hide();
+            $('.beerEditDelReviewButtons').hide();
+        });
         $('input[type=radio][name="beerSort"]').change(function() {
             var beerSortMethodValue = "none";
             if (this.value == "beerName") {
@@ -246,12 +275,72 @@
                     //called when successful
                     $("#beerList").empty;
                     $("#beerList").html(newList);
+                    $(".beerClosed").show();
+                    $(".beerOpen").hide();
+                    $(".beerWriteReviewButton").hide();
+                    $('.beerViewReviews').hide();
                 },
                 error: function(e) {
                     //called when there is an error
                     //console.log(e.message);
                 }
             });
+        });
+        $('#newReviewButton').click(function() {
+            var beerName = $('#accordion .in').parent().attr('data-beerName');
+            $.ajax({
+                url: "ajax/beerWriteReview.php",
+                type: "POST",
+                success: function(writeReviewArea) {
+                    $(".beerWriteReview").empty();
+                    $(".beerWriteReview").html(writeReviewArea);
+                    $(".beerWriteReviewButton").hide();
+                }
+            });
+        });
+        $('#editReviewButton').click(function() {
+            var beerName = $('#accordion .in').parent().attr('data-beerName');
+            $.ajax({
+                url: "ajax/beerEditReview.php",
+                type: "POST",
+                data: {"beerName": beerName},
+                success: function(editReviewArea) {
+                    $(".beerWriteReview").empty();
+                    $(".beerWriteReview").html(editReviewArea);
+                    $(".beerEditDelReviewButtons").hide();
+                }
+            })
+        });
+        $('#deleteReviewButton').click(function(){
+            var confirmDelete = confirm("By clicking OK, your review of this beer will be deleted.");
+            if (confirmDelete == true) {
+                var beerName = $('#accordion .in').parent().attr('data-beerName');
+                $.ajax({
+                    url: "ajax/beerSubmitReview.php",
+                    type: "POST",
+                    data: {"beerName": beerName, "beerReviewType": 2},
+                    success: function() {
+                        $.ajax({
+                            url: "ajax/beerViewReviews.php",
+                            type: "POST",
+                            data: {"beerName": beerName},
+                            success: function(data) {
+                                $(".beerViewReviews").html(data);
+                                if($(".viewReviewsSection").is(":empty")) {
+                                    $(".beerViewReviews").html("<h3>There are no reviews for this beer. Be the first to review this beer.</h3>");
+                                }
+                            },
+                            error: function(e) {
+                                //called when there is an error
+                                //console.log(e.message);
+                            }
+                        });
+                        $(".beerWriteReviewButton").show();
+                        $(".beerEditDelReviewButtons").hide();
+                        $(".beerWriteReview").html("Your review has been successfully deleted.");
+                    }
+                });
+            }
         });
     </script>
 
@@ -264,11 +353,11 @@
                     if ($beerCount = $row['beerID_fk']) {
                         echo '<script>';
                             if($row["rating"] == 0) {
-                                echo '$("#beer'. $beerCount . 'Dislike").css("background-color","red");';
-                                echo '$("#beer'. $beerCount . 'Dislike").addClass("active");';
+                                echo '$("#beer'. $beerCount . 'Dislike").css("background-color","red");
+                                $("#beer'. $beerCount . 'Dislike").addClass("active");';
                             } else if($row["rating"] == 1) {
-                                echo '$("#beer'. $beerCount . 'Like").css("background-color","green");';
-                                echo '$("#beer'. $beerCount . 'Like").addClass("active");';
+                                echo '$("#beer'. $beerCount . 'Like").css("background-color","green");
+                                $("#beer'. $beerCount . 'Like").addClass("active");';
                             }
                         echo '</script>';
                     }
@@ -281,3 +370,4 @@
 ?>
 </body>
 </html>
+
