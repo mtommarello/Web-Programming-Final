@@ -210,6 +210,7 @@
                 }
             ?>
             </div>
+        </div>
             <div class="hidden-xs hidden-sm col-md-6 col-lg-6 cards">
                 <h2 class="beerClosed">Select a Beer on the Left</h2>
                 <h2 class="beerOpen"></h2>
@@ -238,7 +239,6 @@
                 </div>
             </div>
         </div>
-    </div>
     
     <script>
         $('input[type=radio][name="beerSort"]').change(function() {
