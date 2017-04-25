@@ -18,13 +18,13 @@
     <div class="container">
         <div class="row animated zoomIn">
             <?php
-                $query = "SELECT brewerName, brewerLocation, brewerLat, brewerLong, brewersHours, brewersDes, brewerAddress FROM brewers";
+                $query = "SELECT brewersID, brewerName, brewerLocation, brewerLat, brewerLong, brewersHours, brewersDes, brewerAddress FROM brewers";
                 $brewerCount = 1;
                 if ($result = mysqli_query($dbConnection, $query)){
                         echo '<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">';
                             echo '<div class="panel-group" id="accordion">';
-                    while ($row = $result->fetch_assoc()) {
-                                echo '<div class="panel panel-default" data-lat="' . $row["brewerLat"] . '" data-long="' . $row["brewerLong"] . '" data-brewerName="' . $row["brewerName"] . '" data-brewerLocation= "' . $row["brewerLocation"] . '" data-brewerAddress="' . $row["brewerAddress"] .'" data-brewerHours="' . $row["brewersHours"] . '">';
+                            while ($row = $result->fetch_assoc()) {
+                                echo '<div class="panel panel-default" data-lat="' . $row["brewerLat"] . '" data-long="' . $row["brewerLong"] . '" data-brewerName="' . $row["brewerName"] . '" data-brewerLocation= "' . $row["brewerLocation"] . '" data-brewerAddress="' . $row["brewerAddress"] .'" data-brewerHours="' . $row["brewersHours"] . '" data-brewersID="' . $row["brewersID"] . '">';
                                     echo '<div class="panel-heading">';
                                         echo '<h4 class="panel-title">';
                                             echo '<a data-toggle="collapse" data-parent="#accordion" href="#brewer' . $brewerCount . '">' . $row["brewerName"] . '</a>';
@@ -32,17 +32,19 @@
                                     echo '</div>';
                                     echo '<div id="brewer' . $brewerCount . '" class="panel-collapse collapse">';
                                         echo '<div class="panel-body">';
-                                        echo $row["brewersDes"] . '<br><br>';
-                                        echo '<div class="hidden-md hidden-lg brewerInfo">';
-                                            echo 'Neighborhood: ' . $row["brewerLocation"] . '<br>';
-                                            echo 'Address: ' . $row["brewerAddress"] . '<br>';
-                                            echo 'Hours: ' . $row["brewersHours"];
-                                        echo '</div>';
+                                            echo $row["brewersDes"] . '<br><br>';
+                                            echo '<div class="hidden-md hidden-lg brewerInfo">';
+                                                echo '<div class="hidden-md hidden-lg mapMobile" id="mapMobile' . $row["brewersID"] . '"></div>';
+                                                echo 'Neighborhood: ' . $row["brewerLocation"] . '<br>';
+                                                echo 'Address: ' . $row["brewerAddress"] . '<br>';
+                                                echo 'Hours: ' . $row["brewersHours"];
+                                            echo '</div>';
                                         echo '</div>';
                                     echo '</div>';
-                                echo '</div>';
+                            echo '</div>';
                         $brewerCount++;
                     }
+                    echo '</div>';
                         echo '</div>';
                 }
             ?>
@@ -78,8 +80,22 @@
             map: map
         });
     }
+        function initMapMobile(lat, long) {
+        var uluru = {lat: parseFloat(lat), lng: parseFloat(long)};
+        var brewersID = $('#accordion .in').parent().attr("data-brewersID");
+        var mapVariable = 'mapMobile' + brewersID;
+        var map = new google.maps.Map(document.getElementById(mapVariable), {
+            zoom: 16,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
     $('#accordion').on('shown.bs.collapse', function () {
         var brewer = $('#accordion .in').parent().attr("data-brewerName");
+        var brewersID = $('#accordion .in').parent().attr("data-brewersID");
         $(".brewersOpen").html(brewer);
         $(".brewersClosed").hide();
         $(".brewersOpen").show();
@@ -98,6 +114,7 @@
         console.log(long);
         $('#map').show();
         initMap(lat, long);
+        initMapMobile(lat, long);
     });
 
     $('#accordion').on('hidden.bs.collapse', function () {
