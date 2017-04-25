@@ -45,18 +45,17 @@
                 '<script>
                     $(".beerWriteReviewButton").show();
                 </script>';
-        }
-
-//If users not logged in will pull and show the beer name to be reviewed 
-        if ($result = mysqli_query($dbConnection, $query)){
-            echo '<div class="viewReviewsSection">';
-            while ($row = $result->fetch_assoc()) {
-                echo '<div class="reviewFor' . $row["beerName"] . '">';
-                    echo '<h3>' . $row["fName"] . ' wrote:</h3>';
-                        echo '<p>' . $row["review"] . '</p>';
+            //If users not logged in will pull and show the beer name to be reviewed 
+            if ($result = mysqli_query($dbConnection, $query)){
+                echo '<div class="viewReviewsSection">';
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div class="reviewFor' . $row["beerName"] . '">';
+                        echo '<h3>' . $row["fName"] . ' wrote:</h3>';
+                            echo '<p>' . $row["review"] . '</p>';
+                    echo '</div>';
+                }
                 echo '</div>';
-            }
-            echo '</div>';
+        }
         }
 
 ?>
