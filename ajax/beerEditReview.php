@@ -21,7 +21,7 @@
         echo '<form id="beerReview">';
             echo '<div class="form-group">';
                 echo '<label for="reviewText">Review</label>';
-                echo '<input class="form-control input-lg" id="reviewText" type="text" value=' . $reviewText . '>';
+                echo '<input class="form-control input-lg" id="reviewText" type="text" value="' . $reviewText . '">';
                 echo '<span class="help-block">Edit your review here.</span>';
             echo '</div>';
             echo '<button type="submit" class="btn btn-primary" id="submitReviewButton">Submit Review</button>';

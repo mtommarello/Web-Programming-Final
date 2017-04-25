@@ -35,5 +35,5 @@
         include 'footer.php';
     ?>
 </body>
-
+    <!-- Note that Brackets will complain that the closing is incomplete.  This is because that the various documents used to properly close the file are loaded via the includes method. -->
 </html>

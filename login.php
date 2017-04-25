@@ -88,6 +88,7 @@
                             echo 'window.history.back();';
                         echo '</script>';
                     } else {
+                        // This will show if the username or password is incorrect using Bootstrap alert classes.
                         echo '<div class="container">';
                             echo '<div class="row">';
                                 echo '<div class="col-sm-12">';
@@ -117,6 +118,7 @@
     <form method="post" action="login.php">
         <div class="container">
             <div class="row animated fadeIn">
+                <!-- This section uses Bootstrap elements to show the login page. -->
                 <div class="col-sm-12 cards">
                     <h2>Please login</h2>
                     <div class="form-group">
@@ -136,4 +138,5 @@
         </div>       
     </form>
 </body>
+    <!-- Note that Brackets will complain that the closing is incomplete.  This is because that the various documents used to properly close the file are loaded via the includes method. -->
 </html>
