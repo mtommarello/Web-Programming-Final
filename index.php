@@ -54,9 +54,9 @@
                         <h2>Beers</h2>
                         <p>View beers in the Pittsburgh Area</p>
                     </a></div>
-                    <div class="col-sm-12 cards"><a href="about.php">
-                        <h2>About</h2>
-                        <p>More About Us</p>
+                    <div class="col-sm-12 cards"><a href="planNight.php">
+                        <h2>Plan My Night</h2>
+                        <p>Calculate Standard Drinks Based on Drinks You Like</p>
                     </a></div>
                 </div>
             </div>
