@@ -38,6 +38,20 @@
     </script>
     <div class="container">
         <div class="row animated zoomIn">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cards">
+                <h2 class="beerClosed hidden-xs hidden-sm">Select a Beer on the Right</h2>
+                <h2 class="beerClosed hidden-md hidden-lg">Select a Beer Below</h2>
+                <h2 class="beerOpen">JavaScript is disabled in your browser. Please enable JavaScript to enable full functionality.</h2>
+                <div class="beerWriteReviewButton">
+                    <button type="submit" class="btn btn-primary" id="newReviewButton">Write Review</button>
+                </div>
+                <div class="beerEditDelReviewButtons">
+                    <button type="submit" class="btn btn-primary" id="editReviewButton">Edit Review</button>
+                    <button type="submit" class="btn btn-danger" id="deleteReviewButton">Delete Review</button>
+                </div>
+                <div class="beerWriteReview"></div>
+                <div class="beerViewReviews"></div>
+            </div>
             <div class="col-xs-12 col-sm-12 hidden-md hidden-lg sortBeers">
                 <h3>Sort Beers</h3>
                 <div class="radio">
@@ -213,19 +227,6 @@
             ?>
             </div>
         </div>
-            <div class="hidden-xs hidden-sm col-md-6 col-lg-6 cards">
-                <h2 class="beerClosed">Select a Beer on the Left</h2>
-                <h2 class="beerOpen">JavaScript is disabled in your browser. Please enable JavaScript to enable full functionality.</h2>
-                <div class="beerWriteReviewButton">
-                    <button type="submit" class="btn btn-primary" id="newReviewButton">Write Review</button>
-                </div>
-                <div class="beerEditDelReviewButtons">
-                    <button type="submit" class="btn btn-primary" id="editReviewButton">Edit Review</button>
-                    <button type="submit" class="btn btn-danger" id="deleteReviewButton">Delete Review</button>
-                </div>
-                <div class="beerWriteReview"></div>
-                <div class="beerViewReviews"></div>
-            </div>
             <div class="hidden-xs hidden-sm col-md-2 col-lg-2 sortBeers">
                 <h3>Sort Beers</h3>
                 <div class="radio">

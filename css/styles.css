@@ -45,7 +45,7 @@ body {
 }
 
 .container{
-height:100%;    
+    height:100%; 
 }
 
 .col-md-4.cards{
@@ -121,7 +121,6 @@ h3 {
     color: #000000;
     text-align: center;
     height: 300px;
-    border: 10px solid #000000;
 }
 
 .beerListXs {
@@ -151,12 +150,10 @@ footer {
 .panel {
     background-color:#D3D7E0;
     opacity: 0.9;
-    margin: 5px;
     font-family: 'Domine', serif;
 }
 
 .panel-body {
-    height: 275px;
     font-family: 'Didact Gothic', sans-serif;
 }
 
@@ -167,24 +164,31 @@ footer {
     margin-right: auto;
 }
 
+.mapMobile {
+    width: 100%;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .brewerDesc {
     background-color:#D3D7E0;
     opacity: 0.9;
     color: #000000;
     text-align: center;
+    padding: 10px;
 }
 
-.col-md-6.col-lg-6.cards{
+.col-md-6.col-lg-6.cards {
     background-color:#D3D7E0;
     opacity: 0.9;
     color: #000000;
     text-align: center;
-    border: 10px solid #000000;
     padding: 10px;
 }
 
-.profile {
-    border: 10px solid #000000;
+.col-xs-12.col-sm-12.cards {
+    border: none;
 }
 
 .col-xs-12.col-sm-12.hidden-md.hidden-lg.sortBeers {
@@ -204,8 +208,11 @@ footer {
     opacity: 0.9;
     color: #000000;
     text-align: center;
-    border: 10px solid #000000;
     padding: 10px;
+}
+
+.col-xs-12.col-sm-12.col-md-4.col-lg-4.cards {
+    margin: 0px;
 }
 
 .radio {
