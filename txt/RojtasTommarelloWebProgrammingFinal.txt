@@ -1,0 +1,19 @@
+Sascha Rojtas
+Michael Tommarello INFSCI1059 Web Programming Final Project
+4/25/2017
+Beer Time
+The idea for this project was born out of a love of craft beer and the seemingly never-ending list of breweries in the Pittsburgh area. Our webpage functions as a launch point for those interested in going to local craft brewers. We have experienced the frustration in trying to keep track of new brewers and forgetting about them completely only a few days later. Our webpage mainly focuses on a user being able to see a list of brewers open in the Pittsburgh area and the beers they have. Users are able to select any beer that the brewers offer and see a description of the beer as well as the ABV percentage. More information about the brewer is displayed once selected, including hours of operation, neighborhood, and address. We utilized the Google Maps API to allow users to quickly see where the brewers are located.
+Our services include users to be able to (number of services):
+    - Create a profile (1)
+        o Users are able to see a list of beers they have liked as well as a list of beers they have
+            rated. There is also a display of how many beers have been liked and disliked.
+    - A list of brewers (2)
+        o Users can select a brewer which opens up Google maps API as well as the contact information below (i.e. hours of operation, address)
+    - A list of beers (3)
+        o Users are able to see a short description upon clicking a beer and logged in users will be
+            able to rate the beer. Users will also be able to sort the beers by (Name, Beer ABV, Beer Style and brewer. Upon selecting a beer, users will be able to write a review and see how popular the beer is. Users not logged in will be prompted to create a profile in order to use the rating and comment features.
+    - Plan your night (1)
+        o This feature allows users to select from a list of beers they have previously liked to show
+            how many standard drinks they will have in a night based on how many of each beer they choose to drink.
+There are still things we would like to accomplish with the website. These include the ability to incorporate the temperature for the day and whether the brewer offers outdoor seating. Other ideas for the future of the website include updating the brewer’s information for things such as pet friendliness, events, and their social media accounts. The future is bright for this topic and there will always be more brewers and beers to add!
+Login credentials: User: final Password: final
