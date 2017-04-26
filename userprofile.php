@@ -1,5 +1,8 @@
 <?php 
     session_start();
+    if($_SESSION) {
+        header("location:index.php");
+    }
 	//connects to database
 	include 'dbConnection.php'; 
 
