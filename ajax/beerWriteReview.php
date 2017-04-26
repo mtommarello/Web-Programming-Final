@@ -2,6 +2,8 @@
     session_start();
     include '../dbConnection.php';
     if($_SESSION) {
+    
+    //Created text box and buttom for review
         echo '<form id="beerReview">';
             echo '<div class="form-group">';
                 echo '<label for="reviewText">Review</label>';
@@ -10,7 +12,8 @@
             echo '</div>';
             echo '<button type="submit" class="btn btn-primary" id="submitReviewButton">Submit Review</button>';
         echo '</form>';
-
+        
+    //On click of review button will show alert if empty text field
         echo
             '<script>
                 $("#submitReviewButton").click(function(event) {
@@ -32,8 +35,10 @@
                                     data: {"beerName": beerName},
                                     success: function(data) {
                                         $(".beerViewReviews").html(data);
+                                            //Pulls results from beerViewReviews and inserts them into beerViewRevies.php html 
                                         if($(".viewReviewsSection").is(":empty")) {
                                             $(".beerViewReviews").html("<h3>There are no reviews for this beer. Be the first to review this beer.</h3>");
+                                            //If there are no reviews, this will let the user know that there are no reviews.
                                         }
                                     },
                                     error: function(e) {
@@ -47,6 +52,8 @@
                 });
             </script>';
     } else {
+        
+    //If user is not logged in with forward them to login page
         echo
             '<script>
                 $(location).attr("href", "login.php")

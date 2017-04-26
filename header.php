@@ -22,3 +22,4 @@
     
     <script src="http://pupunzi.com/mb.components/mb.YTPlayer/demo/inc/jquery.mb.YTPlayer.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS used throughout the website along with JavaScript including Bootstrap, JQuery, the video player used on index.php.  Responsive layout is also enabled in this section. -->

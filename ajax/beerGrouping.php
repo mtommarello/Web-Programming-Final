@@ -1,6 +1,8 @@
 <?php
     session_start();
     include '../dbConnection.php';
+    
+//Set SQL statement depending on POST result    
     if($_POST["beerSortMethod"] == "beerName") {
         $query = "SELECT * FROM beers ORDER BY beerName";
     } else if($_POST["beerSortMethod"] == "beerABV") {
@@ -15,6 +17,7 @@
         $query = "SELECT * FROM beers;";
     }
 
+        //See beers.php page for comments - reorders beer base on selection 
                 if ($result = mysqli_query($dbConnection, $query)){
                         echo '<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                             <div class="panel-group" id="accordion">';
