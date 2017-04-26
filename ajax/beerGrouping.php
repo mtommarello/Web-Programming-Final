@@ -52,7 +52,6 @@
                                                             },
                                                             error: function(e) {
                                                                 //called when there is an error
-                                                                //console.log(e.message);
                                                             }
                                                         });
                                                     } else {
@@ -70,7 +69,6 @@
                                                             },
                                                             error: function(e) {
                                                                 //called when there is an error
-                                                                //console.log(e.message);
                                                             }
                                                         });
                                                     }
@@ -91,7 +89,6 @@
                                                             },
                                                             error: function(e) {
                                                                 //called when there is an error
-                                                                //console.log(e.message);
                                                             }
                                                         });
                                                     } else {
@@ -109,7 +106,6 @@
                                                             },
                                                             error: function(e) {
                                                                 //called when there is an error
-                                                                //console.log(e.message);
                                                             }
                                                         });
                                                     }
@@ -152,7 +148,6 @@
                                         },
                                         error: function(e) {
                                             //called when there is an error
-                                            //console.log(e.message);
                                         }
                                     });
                                 });

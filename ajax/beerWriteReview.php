@@ -43,7 +43,6 @@
                                     },
                                     error: function(e) {
                                         //called when there is an error
-                                        //console.log(e.message);
                                     }
                                 });
                             }
