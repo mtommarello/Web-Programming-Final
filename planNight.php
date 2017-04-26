@@ -102,7 +102,7 @@
                 numberOfDrinks = $('#beer' + parseInt(beerID)).val();
                 var standardDrinkTemp = $('#beer' + parseInt(beerID)).attr('data-standardDrink');
                 console.log(standardDrinkTemp);
-                if (parseInt(numberOfDrinks) <= 0) {
+                if (parseInt(numberOfDrinks) <= 0 || numberOfDrinks == "") {
                     alert("Please enter a positive whole number.");
                     return false;
                 } else {
