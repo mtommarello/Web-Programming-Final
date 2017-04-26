@@ -88,7 +88,7 @@ if ($_POST) {
 		else {
             $email = mysqli_real_escape_string($dbConnection,$_POST['email']);
 		}
-    
+    // If there are no errors in the statements run above, the counter will stay at zero and a SQL insert statement will be run to create the user.  If there are errors, the counter will increase for each error and the user will be prompted with an error.
         if($counter == 0) {
             $sql = "INSERT INTO finalUsers (fName, lName, password, phoneNumber, age, userName) 
             VALUES ('" . $fName . "', '" . $lName . "', '" . $password . "', '" . $phone . "', '" . $age . "', '" . $userName . "');";
@@ -125,6 +125,7 @@ if ($_POST) {
                         if($_POST) {
                             if($counter == 0) {
                             } else {
+                                // If the page is posted and there are errors, the user will be prompted with each error through a Bootstrap error panel.
                                 echo '<div class="alert alert-warning">
                                     <strong>Warning!</strong><br>' . $fnameErr,  $lnameErr, $userNameErr, $passwordErr, $ageErr, $emailErr, $phoneErr .
                                     '</div>';
@@ -132,36 +133,45 @@ if ($_POST) {
                         }
                     ?>
                     <div class="form-group">
+                        <!-- Form group for the user's first name.  Sticky with PHP. -->
                         <label for="fName" class="createProfile">First Name: </label>
                         <input type="text" id="fName" name = "fName" class="form-control createProfile" value = "<?php if    (isset($_POST['fName'])){echo htmlspecialchars($fName);}?>"/>
                     </div>
                     <div class="form-group">
+                        <!-- Form group for the user's last name.  Sticky with PHP. -->
                         <label for="lName" class="createProfile">Last Name: </label>
 			             <input type="text" id= "lName" name = "lName" class="form-control createProfile" value = "<?php if (isset($_POST['lName'])){echo htmlspecialchars($lName);}?>"/>
                     </div>
                     <div class="form-group">
+                        <!-- Form group for the user's username.  Sticky with PHP. -->
                         <label for="userName" class="createProfile">Username: </label>
 			             <input type="text" id="userName" name = "userName" class="form-control createProfile" value = "<?php if (isset($_POST['userName'])){echo htmlspecialchars($userName);}?>"/>
                     </div>
                     <div class="form-group">
+                        <!-- Form group for the user's password.  Sticky with PHP. -->
                         <label for="password" class="createProfile">Password: </label>
 			             <input type="password" id="password" name = "password" class="form-control createProfile" value = "<?php if (isset($_POST['password'])){echo htmlspecialchars($password);}?>"/>
                     </div>
                     <div class="form-group">
+                        <!-- Form group for the user's age.  Sticky with PHP. -->
                         <label for="age" class="createProfile">Age: </label>
                         <input type="number" id="age" name="age" class="form-control createProfile" value = "<?php if (isset($_POST['age'])){echo htmlspecialchars ($age);}?>"/>
                     </div>
                     <div class="form-group">
+                        <!-- Form group for the user's email.  Sticky with PHP. -->
                         <label for="email" class="createProfile">Email: </label>
                         <input type="email" id="email" name="email" class="form-control createProfile" value = "<?php if(isset($_POST['email'])){echo htmlspecialchars ($email);}?>"/>
                     </div>
                     <div class="form-group">
+                        <!-- Form group for the user's phone number.  Sticky with PHP. -->
                         <label for="phoneNumber" class="createProfile">Phone Number: </label>
                         <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control createProfile" value = "<?php if(isset($_POST['phoneNumber'])){echo htmlspecialchars ($phone);}?>"/>
                     </div>
+                    <!-- Submit button to post to PHP -->
                     <button type="submit" class="btn btn-primary" id="createProfile">Create Account</button>
                     <br>
                     <br>
+                    <!-- Allows user to go to login page if they already have an account -->
                     <p>Already have an account? <a href="login.php">Click here to login.</a></p>
                 </div>
             </div>

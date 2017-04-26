@@ -122,16 +122,20 @@
                 <div class="col-sm-12 cards">
                     <h2>Please login</h2>
                     <div class="form-group">
+                        <!-- Form group for the user's username.  Sticky with PHP. -->
                         <label for="userName" class="loginPage">Username: </label>
                         <input name ="userName" type="text" id="userName" class="form-control loginPage" placeholder= "Enter Username" value="<?php echo htmlspecialchars($userName); ?>"  maxlength="20" required>
                     </div>
                     <div class="form-group">
+                        <!-- Form group for the user's password.  Sticky with PHP. -->
                         <label for="password" class="loginPage">Password: </label>
                         <input name="password"  type="password" id="password" class="form-control loginPage" placeholder= "Enter Password" value="<?php echo htmlspecialchars($password); ?>" maxlength="15" required >
                     </div>
+                    <!-- Button used to submit with post to login to the site or provide error message in return if credentials are incorrect. -->
                     <button type="submit" class="btn btn-primary" id="loginPage">Login</button>
                     <br>
                     <br>
+                    <!-- Allows user to easily create an account if they do not have one already. -->
                     <p>Don't have an account? <a href="userprofile.php">Click here to create one.</a></p>
                 </div>
             </div>
