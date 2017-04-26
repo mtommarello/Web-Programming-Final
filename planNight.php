@@ -103,6 +103,7 @@
                 var standardDrinkTemp = $('#beer' + parseInt(beerID)).attr('data-standardDrink');
                 if (parseInt(numberOfDrinks) <= 0 || numberOfDrinks == "") {
                     alert("Please enter a positive whole number.");
+                    calculationButtonShowValue = 0;
                     return false;
                 } else {
                     $('#beer' + parseInt(beerID)).prop("disabled", true);
